@@ -1,14 +1,14 @@
 <?php
-/*
-Plugin Name: them.es Plus
-Plugin URI: http://them.es
-Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
-Version: 1.1
-Author: them.es
-Author URI: http://them.es
-Text Domain: themes-plus
-License: GPL version 2 or later - http://www.gnu.org/licenses/gpl-2.0
-*/
+/**
+ * Plugin Name: them.es Plus
+ * Plugin URI: http://them.es
+ * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
+ * Version: 1.1
+ * Author: them.es
+ * Author URI: http://them.es
+ * Text Domain: themes-plus
+ * License: GPL version 2 or later - http://www.gnu.org/licenses/gpl-2.0
+ */
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
