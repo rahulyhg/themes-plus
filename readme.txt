@@ -62,24 +62,25 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * You can ask questions in the Support forums:
 [https://github.com/them-es](https://github.com/them-es "GitHub")
 [http://them.es/support](http://them.es/support "them.es Support")
+
+
 * Developers who have a GitHub account are welcome to help us improve the Plugin
   
 == Upgrade Notice ==
 
 = 1.1 =
-* Public Release in the WordPress Plugin directory
-* GitHub repository
+Public Release in the WordPress Plugin directory
 
 == Changelog ==
 
 = 1.1 =
-* New feature: Integrated the Shortcake Plugin
-* Minor bugfixes
+New feature: Integrated the Shortcake Plugin
+Minor bugfixes
 
 = 1.1a =
-* New feature: Portfolio Filter
-* Updates: Minor CSS changes, Translations
-* Docs: Added Dependencies and Licence information
+New feature: Portfolio Filter
+Updates: Minor CSS changes, Translations
+Docs: Added Dependencies and Licence information
 
 = 1.0 =
-* Initial Release
+Initial Release on a GitHub repository
