@@ -50,25 +50,25 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 = Which modules are included? How can I add them to a page? =
 * __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Content Carousels, Bootstrap Column Grid
-* Simply use the them.es+ button in the TinyMCE Editor to add a module on the page
+  * _Simply use the them.es+ button in the TinyMCE Editor to add a module on the page_
 * __WordPress Standard Image Gallery hooks:__ Gallery Grids, Image Carousels, Panzoom (Ken Burns) Slider, Portfolio Filter
-* The WordPress Gallery hooks can be activated by creating a new Gallery, adding images and selecting the desired "Type" in the Gallery Settings
+  * _The WordPress Gallery hooks can be activated by creating a new Gallery, adding images and selecting the desired "Type" in the Gallery Settings_
 
 = Does this Plugin work with my Theme? =
 * The Plugin has been primarily developed to bring additional features into [them.es](http://them.es/ "them.es") Themes
 * If your WordPress Theme has been built with Bootstrap and if all Bootstrap components are included in your Theme the Plugin should work out-of-the-box
 
 = Where can I get help? =
-* You can ask questions in the Support forums:
-[https://github.com/them-es](https://github.com/them-es "GitHub")
-[http://them.es/support](http://them.es/support "them.es Support")
-* Developers who have a GitHub account are welcome to help us improve the Plugin
+* You can ask questions in the Support forums
+  * [https://github.com/them-es](https://github.com/them-es "GitHub")
+  * [http://them.es/support](http://them.es/support "them.es Support")
+* Developers are welcome to help us improve the Plugin via [GitHub](https://github.com/them-es "GitHub")
   
 == Upgrade Notice ==
 
 = 1.1 =
 * Public Release in the WordPress Plugin directory
-* GitHub repository
+* Updated documentation
 
 == Changelog ==
 
@@ -83,3 +83,4 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 = 1.0 =
 * Initial Release
+* GitHub repository
