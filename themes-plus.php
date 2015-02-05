@@ -19,9 +19,9 @@ if ( !class_exists("themesPlus") ) {
 		function themesPlus() {
             
             // Init function
-            function themes_init() {
+            function themesPlus_init() {
                 
-                wp_register_style( 'pluginstylesheet', plugins_url('plugin.css', __FILE__) );
+                wp_register_style( 'pluginstylesheet', plugins_url('style.css', __FILE__) );
                 wp_enqueue_style( 'pluginstylesheet' ); // Load CSS
                 
                 add_editor_style( plugins_url('style-editor.css', __FILE__) ); // Style transformed Shortcodes in TinyMCE Editor
@@ -29,14 +29,14 @@ if ( !class_exists("themesPlus") ) {
                 wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont
                 
             }
-            add_action('init', 'themes_init');
+            add_action('init', 'themesPlus_init');
             
-            function themes_load_textdomain() {
+            function themesPlus_load_textdomain() {
                 
                 load_plugin_textdomain( 'themes-plus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
                 
             }
-            add_action( 'plugins_loaded', 'themes_load_textdomain' );
+            add_action( 'plugins_loaded', 'themesPlus_load_textdomain' );
             
             
             /**
@@ -46,7 +46,9 @@ if ( !class_exists("themesPlus") ) {
             // Include file
             $initshortcake = plugin_dir_path( __FILE__ ) . '/shortcake-plugin/shortcode-ui.php';
             
-            if ( is_readable($initshortcake) ) require_once($initshortcake);
+            if ( is_readable($initshortcake) ) {
+                require_once($initshortcake);
+            }
             
             
             /**
@@ -55,7 +57,9 @@ if ( !class_exists("themesPlus") ) {
             // Include file
             $tinymce_mod = plugin_dir_path( __FILE__ ) . '/inc/tinymce_mod.php';
             
-            if ( is_readable($tinymce_mod) ) require_once($tinymce_mod);
+            if ( is_readable($tinymce_mod) ) {
+                require_once($tinymce_mod);
+            }
             
             
             /**
@@ -64,7 +68,9 @@ if ( !class_exists("themesPlus") ) {
             // Include file
             $gallery_mod = plugin_dir_path( __FILE__ ) . '/inc/gallery_mod.php';
             
-            if ( is_readable($gallery_mod) ) require_once($gallery_mod);
+            if ( is_readable($gallery_mod) ) {
+                require_once($gallery_mod);
+            }
 
             /**
              * Add a custom field "External Weblink" to Media files
@@ -150,27 +156,29 @@ if ( !class_exists("themesPlus") ) {
          * Register a TinyMCE UI for the Shortcode
          * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
          */
-            shortcode_ui_register_for_shortcode(
-                'map',
-                array(
-                    'label' => 'map',
-                    'listItemImage' => 'dashicons-location',
-                    'attrs' => array(
-                        array(
-                            'label'       => 'Lat,Lng',
-                            'attr'        => 'latlng',
-                            'type'        => 'text',
-                            'placeholder' => '0.0000,0.0000',
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'map',
+                    array(
+                        'label' => 'map',
+                        'listItemImage' => 'dashicons-location',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'Lat,Lng',
+                                'attr'        => 'latlng',
+                                'type'        => 'text',
+                                'placeholder' => '0.0000,0.0000',
+                            ),
+                            array(
+                                'label'       => 'Zoom',
+                                'attr'        => 'zoom',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
                         ),
-                        array(
-                            'label'       => 'Zoom',
-                            'attr'        => 'zoom',
-                            'type'        => 'text',
-                            'placeholder' => '',
-                        ),
-                    ),
-                )
-            );
+                    )
+                );
+            }
 
 
         /**
@@ -206,20 +214,22 @@ if ( !class_exists("themesPlus") ) {
          * Register a TinyMCE UI for the Shortcode
          * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
          */
-            shortcode_ui_register_for_shortcode(
-                'contactform',
-                array(
-                    'label' => 'contactform',
-                    'listItemImage' => 'dashicons-email-alt',
-                    'attrs' => array(
-                        array(
-                            'label'       => 'No customization possible!',
-                            'attr'        => '',
-                            'type'        => 'checkbox'
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'contactform',
+                    array(
+                        'label' => 'contactform',
+                        'listItemImage' => 'dashicons-email-alt',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'No customization possible!',
+                                'attr'        => '',
+                                'type'        => 'checkbox'
+                            ),
                         ),
-                    ),
-                )
-            );
+                    )
+                );
+            }
 
 
         /**
@@ -261,21 +271,23 @@ if ( !class_exists("themesPlus") ) {
          * Register a TinyMCE UI for the Shortcode
          * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
          */
-            shortcode_ui_register_for_shortcode(
-                'recentposts',
-                array(
-                    'label' => 'recentposts',
-                    //'listItemImage' => 'dashicons-editor-quote',
-                    'attrs' => array(
-                        array(
-                            'label'       => 'Number of Posts',
-                            'attr'        => 'number',
-                            'type'        => 'text',
-                            'placeholder' => '5',
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'recentposts',
+                    array(
+                        'label' => 'recentposts',
+                        //'listItemImage' => 'dashicons-editor-quote',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'Number of Posts',
+                                'attr'        => 'number',
+                                'type'        => 'text',
+                                'placeholder' => '5',
+                            ),
                         ),
-                    ),
-                )
-            );
+                    )
+                );
+            }
             
             
         /**
@@ -330,34 +342,36 @@ if ( !class_exists("themesPlus") ) {
          * Register a TinyMCE UI for the Shortcode
          * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
          */
-            shortcode_ui_register_for_shortcode(
-                'item',
-                array(
-                    'label' => 'item',
-                    //'listItemImage' => 'dashicons-editor-quote',
-                    'attrs' => array(
-                        array(
-                            'label'       => 'Content',
-                            'attr'        => 'content',
-                            'type'        => 'textarea',
-                            'placeholder' => 'Lorem ipsum dolor sit amet...',
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'item',
+                    array(
+                        'label' => 'item',
+                        //'listItemImage' => 'dashicons-editor-quote',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'Content',
+                                'attr'        => 'content',
+                                'type'        => 'textarea',
+                                'placeholder' => 'Lorem ipsum dolor sit amet...',
+                            ),
+                            array(
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
                         ),
-                        array(
-                            'label'       => 'Class',
-                            'attr'        => 'class',
-                            'type'        => 'text',
-                            'placeholder' => '',
-                        ),
-                        array(
-                            'label'       => 'CSS',
-                            'attr'        => 'style',
-                            'type'        => 'text',
-                            'placeholder' => '',
-                        ),
-                    ),
-                )
-            );
-
+                    )
+                );
+            }
+            
 
         /**
          * Grid
@@ -420,33 +434,35 @@ if ( !class_exists("themesPlus") ) {
          * Register a TinyMCE UI for the Shortcode
          * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
          */
-            shortcode_ui_register_for_shortcode(
-                'col',
-                array(
-                    'label' => 'col',
-                    //'listItemImage' => 'dashicons-editor-quote',
-                    'attrs' => array(
-                        array(
-                            'label'       => 'Content',
-                            'attr'        => 'content',
-                            'type'        => 'textarea',
-                            'placeholder' => 'Lorem ipsum dolor sit amet...',
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'col',
+                    array(
+                        'label' => 'col',
+                        //'listItemImage' => 'dashicons-editor-quote',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'Content',
+                                'attr'        => 'content',
+                                'type'        => 'textarea',
+                                'placeholder' => 'Lorem ipsum dolor sit amet...',
+                            ),
+                            array(
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
                         ),
-                        array(
-                            'label'       => 'Class',
-                            'attr'        => 'class',
-                            'type'        => 'text',
-                            'placeholder' => '',
-                        ),
-                        array(
-                            'label'       => 'CSS',
-                            'attr'        => 'style',
-                            'type'        => 'text',
-                            'placeholder' => '',
-                        ),
-                    ),
-                )
-            );
+                    )
+                );
+            }
 
             
 		}

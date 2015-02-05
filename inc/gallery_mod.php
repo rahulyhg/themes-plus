@@ -3,7 +3,7 @@
     // Extend Gallery settings: Add Dropdown "Type" (https://wordpress.org/support/topic/how-to-add-fields-to-gallery-settings#post-5000775)
     add_action('print_media_templates', function() {
 ?>
-    <script type="text/html" id="tmpl-themes-custom-gallery-setting">
+    <script type="text/html" id="tmpl-themesplus-custom-gallery-setting">
         <label class="setting">
             <span><?php _e( 'Type', 'themes-plus'); ?></span>
             <select data-setting="type">
@@ -28,7 +28,7 @@
             // merge default gallery settings template with yours
             wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
                 template: function (view) {
-                    return wp.media.template('gallery-settings')(view) + wp.media.template('custom-themes-gallery-setting')(view);
+                    return wp.media.template('gallery-settings')(view) + wp.media.template('themesplus-custom-gallery-setting')(view);
                 }
             });
         });
