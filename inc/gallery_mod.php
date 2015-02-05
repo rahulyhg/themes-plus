@@ -3,7 +3,7 @@
     // Extend Gallery settings: Add Dropdown "Type" (https://wordpress.org/support/topic/how-to-add-fields-to-gallery-settings#post-5000775)
     add_action('print_media_templates', function() {
 ?>
-    <script type="text/html" id="tmpl-custom-gallery-setting">
+    <script type="text/html" id="tmpl-themes-custom-gallery-setting">
         <label class="setting">
             <span><?php _e( 'Type', 'themes-plus'); ?></span>
             <select data-setting="type">
@@ -28,7 +28,7 @@
             // merge default gallery settings template with yours
             wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
                 template: function (view) {
-                    return wp.media.template('gallery-settings')(view) + wp.media.template('custom-gallery-setting')(view);
+                    return wp.media.template('gallery-settings')(view) + wp.media.template('custom-themes-gallery-setting')(view);
                 }
             });
         });
@@ -119,7 +119,7 @@
                 if ( isset($url) ) :
                     $image = '<a href="' . $url . '">' . $image . '</a>';
                 else:
-                    $image = isset($link) && 'none' == $link ? '<span>' . $image . '</span>' : '<a href="' . wp_get_attachment_url( $id ) . '" rel="lightbox[grid]">' . $image . '</a>';
+                    $image = isset($link) && 'none' == $link ? '<span>' . $image . '</span>' : '<a href="' . wp_get_attachment_url( $id ) . '">' . $image . '</a>';
                 
                 endif;
                 
@@ -153,9 +153,9 @@
 
                     if ( !empty($id) ) :
                         if ( isset($url) && !empty($url) ) :
-                            $image = '<a href="' . $url . '" rel="lightbox[grid-stacked]" style="background-image: url(' . $imageurl . ');"></a>';
+                            $image = '<a href="' . $url . '" style="background-image: url(' . $imageurl . ');"></a>';
                         else:
-                            $image = isset($link) && 'none' == $link ? '<span style="background-image: url(' . $imageurl . ');"></span>' : '<a href="' . wp_get_attachment_url( $id ) . '" rel="lightbox[grid-stacked]" style="background-image: url(' . $imageurl . ');"></a>';
+                            $image = isset($link) && 'none' == $link ? '<span style="background-image: url(' . $imageurl . ');"></span>' : '<a href="' . wp_get_attachment_url( $id ) . '" style="background-image: url(' . $imageurl . ');"></a>';
                         
                         endif;
                     
