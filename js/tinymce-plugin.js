@@ -103,7 +103,7 @@
                                     editor.insertContent('[carousel][item]Lorem ipsum dolor sit amet...[/item][item]Lorem ipsum dolor sit amet...[/item][item]Lorem ipsum dolor sit amet...[/item][/carousel]');
                                 } else {
                                     var items = "";
-                                    for (i = 0; i < e.data.number; i++) {
+                                    for (var i = 0; i < e.data.number; i++) {
                                         items += '[item]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/item]';
                                     }
                                     editor.insertContent('[carousel]' + items + '[/carousel]');

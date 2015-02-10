@@ -173,10 +173,12 @@
     a {
         position: relative;
         opacity: 1;
+        background-color: #000;
         .transition(all .25s ease);
 
         &:before {
             content: "+";
+            z-index: 1000;
             opacity: 0;
             color: #FFF;
             position: absolute;
@@ -191,7 +193,10 @@
         }
         
         &:hover {
-            opacity: @opacity;
+            
+            img {
+                opacity: @opacity;
+            }
             
             &:before {
                 opacity: 1;
@@ -347,7 +352,7 @@
     img {
         max-width: 100%;
         height: auto;
-        margin-bottom: @margin-grid;
+        border-bottom: @margin-grid solid #FFF;
     }
     
     .column { float: left; }
@@ -359,7 +364,7 @@
 
 .grid-stacked {
     
-	background: #FFF;
+	background-color: #FFF;
 	overflow: hidden;
     
     a, span {
