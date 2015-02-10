@@ -29,17 +29,5 @@
        array_push($buttons, "themes_tinymce_button");
        return $buttons;
     }
-    
-    // Future: Custom Styling of Shortcodes Output...
-    add_action('print_media_templates', function() {
-        if ( ! isset( get_current_screen()->id ) || get_current_screen()->base != 'post' )
-            return;
-        ?>
-?>
-        <script type="text/html" id="tmpl-custom-shortcodes">
-            
-        </script>
-<?php
-    });
 
 ?>
