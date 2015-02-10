@@ -3,7 +3,7 @@ Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,11 +66,20 @@ Useful WordPress Add-ons for Themes built with Bootstrap
   
 == Upgrade Notice ==
 
+= 1.1.1 =
+* Support for custom Marker images in Maps
+* Important notice: Replaced "#map" with "#map-canvas" to follow Google Maps API docs
+
 = 1.1 =
 * Public Release in the WordPress Plugin directory
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.1 =
+* New feature: Maps now support a custom Marker image URL, New ID for Map canvas
+* Updates: Shortcake Plugin, Minor JS changes
+* Minor bugfixes
 
 = 1.1 =
 * New feature: Integrated the Shortcake Plugin

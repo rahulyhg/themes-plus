@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: http://them.es
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1
+ * Version: 1.1.1
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus

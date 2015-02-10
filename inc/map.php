@@ -38,7 +38,7 @@
             wp_register_script( 'gmapsinit', plugins_url( '/js/map.min.js', dirname(__FILE__) ), array('gmapsapi'), '1.0', false );
             wp_enqueue_script( 'gmapsinit' );
     ?>
-		<div id="map" data-latlng="<?php echo $latlng; ?>"<?php if ( isset($zoom) && $zoom != "" ): echo ' data-zoom="' . $zoom . '"'; endif; if ( isset($marker) && $marker != "" ): echo ' data-marker="' . $marker . '"'; endif; ?>><?php _e('Map', 'themes-plus'); ?></div><!-- /#map -->
+		<div id="map-canvas" data-latlng="<?php echo $latlng; ?>"<?php if ( isset($zoom) && $zoom != "" ): echo ' data-zoom="' . $zoom . '"'; endif; if ( isset($marker) && $marker != "" ): echo ' data-marker="' . $marker . '"'; endif; ?>><?php _e('Map', 'themes-plus'); ?></div><!-- /#map -->
 	<?php 
         else:
     ?>
