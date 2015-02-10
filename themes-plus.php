@@ -175,6 +175,12 @@ if ( !class_exists("themesPlus") ) {
                                 'type'        => 'text',
                                 'placeholder' => '',
                             ),
+                            array(
+                                'label'       => 'Marker (PNG/GIF/JPG, 128x128)',
+                                'attr'        => 'marker',
+                                'type'        => 'text',
+                                'placeholder' => 'http://',
+                            ),
                         ),
                     )
                 );

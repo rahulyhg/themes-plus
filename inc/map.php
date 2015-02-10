@@ -5,19 +5,24 @@
         echo '<script>var styles = ' . $map_styles . '</script>';
     endif;
     
-    // [map latlng='###.####,###.####' zoom='##']
+    // [map latlng='###.####,###.####' zoom='##' marker='http://']
     // 1. Check Shortcode attributes (first choice!): $latlng, $zoom
     extract(shortcode_atts(array(
         'latlng' => '',
         'zoom' => '',
+        'marker' => '',
         'class' => '',
         'style' => ''
     ), $atts));
     
     if ( empty($latlng) ):
-        // [map]
-        // 2. Use global settings (Theme Customization API)
+        // Use global settings (Theme Customization API)
         $latlng = trim( get_theme_mod('map_latlng') );
+    endif;
+
+    if ( empty($marker) ):
+        // Use global settings (Theme Customization API)
+        $marker = trim( get_theme_mod('map_marker') );
     endif;
 ?>
 
@@ -33,7 +38,7 @@
             wp_register_script( 'gmapsinit', plugins_url( '/js/map.min.js', dirname(__FILE__) ), array('gmapsapi'), '1.0', false );
             wp_enqueue_script( 'gmapsinit' );
     ?>
-		<div id="map" data-latlng="<?php echo $latlng; ?>"<?php if ( isset($zoom) && $zoom != "" ): echo ' data-zoom="' . $zoom . '"'; endif; ?>><?php _e('Map', 'themes-plus'); ?></div><!-- /#map -->
+		<div id="map" data-latlng="<?php echo $latlng; ?>"<?php if ( isset($zoom) && $zoom != "" ): echo ' data-zoom="' . $zoom . '"'; endif; if ( isset($marker) && $marker != "" ): echo ' data-marker="' . $marker . '"'; endif; ?>><?php _e('Map', 'themes-plus'); ?></div><!-- /#map -->
 	<?php 
         else:
     ?>
