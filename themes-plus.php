@@ -181,6 +181,18 @@ if ( !class_exists("themesPlus") ) {
                                 'type'        => 'text',
                                 'placeholder' => 'http://',
                             ),
+                            array(
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
                         ),
                     )
                 );
@@ -228,9 +240,16 @@ if ( !class_exists("themesPlus") ) {
                         'listItemImage' => 'dashicons-email-alt',
                         'attrs' => array(
                             array(
-                                'label'       => 'No customization possible!',
-                                'attr'        => '',
-                                'type'        => 'checkbox'
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
                             ),
                         ),
                     )

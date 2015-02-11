@@ -77,8 +77,8 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Changelog ==
 
 = 1.1.1 =
-* New feature: Maps now support a custom Marker image URL, New ID for Map canvas
-* Updates: Shortcake Plugin, Minor JS changes
+* New feature: Maps now support a Marker image URL attribute, Contact form and Map shortcodes now allow custom class/style attributes
+* Updates: Shortcake Plugin, JS changes
 * Minor bugfixes
 
 = 1.1 =
