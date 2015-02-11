@@ -78,7 +78,7 @@
                                 label: 'Number of Posts'
                             }],
                             onsubmit: function (e) {
-                                var number;
+                                var number = "";
                                 if (e.data.number !== '' || !isNaN(e.data.number)) {
                                     number = ' number="' + e.data.number + '"';
                                 }
@@ -141,7 +141,7 @@
                                     label: 'Marker (PNG/GIF/JPG, 128x128)'
                                 }],
                             onsubmit: function (e) {
-                                var latlng, zoom, markerurl;
+                                var latlng = "", zoom = "", markerurl = "";
                                 if ((e.data.lat !== '' && e.data.lng !== '') && (!isNaN(e.data.lat) && !isNaN(e.data.lng))) {
                                     latlng = ' latlng="' + e.data.lat + ',' + e.data.lng + '"';
                                 }

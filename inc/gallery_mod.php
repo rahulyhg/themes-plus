@@ -358,14 +358,16 @@
                     endif;
                 }
                 
-                $unique_links = array_unique($links); // Unique array
-                $unique_links = array_map('strtolower', $unique_links);
-                asort($unique_links); // Sort array
-                //print_r($unique_links);
+                if ( isset($links) ) :
+                    $unique_links = array_unique($links); // Unique array
+                    $unique_links = array_map('strtolower', $unique_links);
+                    asort($unique_links); // Sort array
+                    //print_r($unique_links);
                 
-                foreach ($unique_links as $link) {
-                    $output .= '<li><button data-group="' . $link . '" class="btn btn-default" title="' . esc_attr( $link ) . '">' . ucwords($link) . '</button></li>';
-                }
+                    foreach ($unique_links as $link) {
+                        $output .= '<li><button data-group="' . $link . '" class="btn btn-default" title="' . esc_attr( $link ) . '">' . ucwords($link) . '</button></li>';
+                    }
+                endif;
                 
             $output .= "</ul>";
             
