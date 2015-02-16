@@ -415,6 +415,7 @@ var Shortcode_UI;
 
 		events: {
 			'keyup  input[type="text"]':   'updateValue',
+			'keyup  input[type="hidden"]': 'updateValue',
 			'keyup  textarea':             'updateValue',
 			'change select':               'updateValue',
 			'change input[type=checkbox]': 'updateValue',
@@ -438,7 +439,11 @@ var Shortcode_UI;
 		 */
 		updateValue: function( e ) {
 			var $el = $(this.el).find( '[name=' + this.model.get( 'attr' ) + ']' );
-			this.model.set( 'value', $el.val() );
+			if ( 'checkbox' === this.model.attributes.type ) {
+				this.model.set( 'value', $el.is( ':checked' ) );
+			} else {
+				this.model.set( 'value', $el.val() );
+			}
 		},
 
 	} );
@@ -657,7 +662,9 @@ var Shortcode_UI;
 		},
 
 		refresh: function() {
-			// @todo Need to trigger disabled state on button.
+			if ( this.frame && this.frame.toolbar ) {
+				this.frame.toolbar.get().refresh();
+			}
 		},
 
 		insert: function() {
@@ -733,7 +740,7 @@ var Shortcode_UI;
 				text = shortcodeUIData.strings.media_frame_toolbar_update_label;
 			}
 
-			toolbar.view = new  wp.media.view.Toolbar( {
+			toolbar.view = new  sui.views.Toolbar( {
 				controller : this,
 				items: {
 					insert: {
@@ -776,6 +783,29 @@ var Shortcode_UI;
 			this.controller.state().insert();
 		},
 
+	});
+	
+	/**
+	 * sui Toolbar view that extends wp.media.view.Toolbar
+	 * to define cusotm refresh method
+	 */
+	sui.views.Toolbar = wp.media.view.Toolbar.extend({
+		initialize: function() {
+			_.defaults( this.options, {
+				requires: false
+			});
+			// Call 'initialize' directly on the parent class.
+			wp.media.view.Toolbar.prototype.initialize.apply( this, arguments );
+		},
+
+		refresh: function() {
+			var action = this.controller.state().props.get('action');
+			this.get('insert').model.set( 'disabled', action == 'select' );
+			/**
+			 * call 'refresh' directly on the parent class
+			 */
+			wp.media.view.Toolbar.prototype.refresh.apply( this, arguments );
+		}
 	});
 
 	/**
