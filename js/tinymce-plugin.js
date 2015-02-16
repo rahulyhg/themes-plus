@@ -23,7 +23,7 @@
                                 e.stopPropagation();
                                 var items = "";
                                 for (var i = 0; i < this.value(); i++) {
-                                    items += '[col]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/col]';
+                                    items += '[col][/col]';
                                 }
                                 editor.insertContent('[row]' + items + '[/row]');
                             }
@@ -35,7 +35,7 @@
                                 e.stopPropagation();
                                 var items = "";
                                 for (var i = 0; i < this.value(); i++) {
-                                    items += '[col]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/col]';
+                                    items += '[col][/col]';
                                 }
                                 editor.insertContent('[row]' + items + '[/row]');
                             }
@@ -47,7 +47,7 @@
                                 e.stopPropagation();
                                 var items = "";
                                 for (var i = 0; i < this.value(); i++) {
-                                    items += '[col]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/col]';
+                                    items += '[col][/col]';
                                 }
                                 editor.insertContent('[row]' + items + '[/row]');
                             }
@@ -59,7 +59,7 @@
                                 e.stopPropagation();
                                 var items = "";
                                 for (var i = 0; i < this.value(); i++) {
-                                    items += '[col]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/col]';
+                                    items += '[col][/col]';
                                 }
                                 editor.insertContent('[row]' + items + '[/row]');
                             }
@@ -89,7 +89,7 @@
                 },
                 {
                     text: 'Carousel',
-                    value: '[carousel][item]Content 1[/item][item]Content 2[/item][item]Content 3[/item][/carousel]',
+                    value: '',
                     onclick: function () {
                         editor.windowManager.open({
                             title: 'Map data',
@@ -100,11 +100,11 @@
                             }],
                             onsubmit: function (e) {
                                 if (e.data.number === '' || isNaN(e.data.number)) {
-                                    editor.insertContent('[carousel][item]Lorem ipsum dolor sit amet...[/item][item]Lorem ipsum dolor sit amet...[/item][item]Lorem ipsum dolor sit amet...[/item][/carousel]');
+                                    editor.insertContent('[carousel][item][/item][item][/item][item][/item][/carousel]');
                                 } else {
                                     var items = "";
                                     for (var i = 0; i < e.data.number; i++) {
-                                        items += '[item]' + parseInt(i + 1) + '. Lorem ipsum dolor sit amet...[/item]';
+                                        items += '[item][/item]';
                                     }
                                     editor.insertContent('[carousel]' + items + '[/carousel]');
                                 }
@@ -114,7 +114,7 @@
                 },
                 {
                     text: 'Map',
-                    value: '[map latlng="0.0000,0.0000" zoom="18"]',
+                    value: '[map]',
                     onclick: function () {
                         editor.windowManager.open({
                             title: 'Map data',
