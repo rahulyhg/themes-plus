@@ -36,8 +36,9 @@
   margin-bottom: 10px;
 }
 /* Grid: .row > .col */
-.content-grid.row {
+.content-grid.row [class*="col"] {
   margin-top: -1px;
+  margin-right: -1px;
 }
 .content-grid.row [class*="col"] img {
   max-width: 100%;
@@ -92,6 +93,7 @@
 .gallery a {
   position: relative;
   opacity: 1;
+  display: block;
   background-color: #000;
   -webkit-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
