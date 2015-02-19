@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: them.es Plus
- * Plugin URI: http://them.es
+ * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -27,6 +27,10 @@ if ( !class_exists("themesPlus") ) {
                 add_editor_style( plugins_url('style-editor.css', __FILE__) ); // Style transformed Shortcodes in TinyMCE Editor
                 
                 wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont
+                
+                // Initialize jQuery countTo Plugin if has shortcode
+                wp_register_script( 'counttoinit', plugins_url( '/js/countto.min.js', __FILE__ ), array('jquery'), '1.0', false );
+                wp_enqueue_script( 'counttoinit' );
                 
             }
             add_action('init', 'themesPlus_init');
@@ -308,6 +312,44 @@ if ( !class_exists("themesPlus") ) {
                                 'attr'        => 'number',
                                 'type'        => 'text',
                                 'placeholder' => '5',
+                            ),
+                        ),
+                    )
+                );
+            }
+            
+            
+        /**
+         * Stats Counter: JQuery Plugin + Code initialized in "themesPlus_init"
+         * 
+         * Shortcode:
+         * [stat]###[/stat]
+         */
+
+            // Number: [stat]###[/stat]
+            function themes_stats_shortcode( $atts = array(), $content = null ) {
+                
+                return '<h3 class="stat h1" data-to="' . do_shortcode( shortcode_unautop( $content ) ) .'" data-speed="2500">' . do_shortcode( shortcode_unautop( $content ) ) .'</h3>'; // If $content contains a shortcode, that code will get processed
+                
+            }
+            add_shortcode( 'stat', 'themes_stats_shortcode' );
+            
+        /**
+         * Register a TinyMCE UI for the Shortcode
+         * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
+         */
+            if (function_exists('shortcode_ui_register_for_shortcode')) {
+                shortcode_ui_register_for_shortcode(
+                    'stat',
+                    array(
+                        'label' => 'Number',
+                        //'listItemImage' => 'dashicons-editor-quote',
+                        'attrs' => array(
+                            array(
+                                'label'       => 'Content',
+                                'attr'        => 'content',
+                                'type'        => 'text',
+                                'placeholder' => '100',
                             ),
                         ),
                     )

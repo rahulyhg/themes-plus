@@ -67,6 +67,52 @@
                     ]
                 },
                 {
+                    text: 'Stats Counter',
+                    value: '',
+                    onclick: function () {
+                        editor.windowManager.open({
+                            title: 'Stats Counter',
+                            body: [{
+                                type: 'textbox',
+                                name: 'number',
+                                label: 'Count to (Number)'
+                            }],
+                            onsubmit: function (e) {
+                                var number = "";
+                                if (e.data.number !== '' || !isNaN(e.data.number)) {
+                                    number = e.data.number;
+                                }
+                                editor.insertContent('[stat]' + number + '[/stat]');
+                            }
+                        });
+                    }
+                },
+                {
+                    text: 'Carousel',
+                    value: '',
+                    onclick: function () {
+                        editor.windowManager.open({
+                            title: 'Carousel',
+                            body: [{
+                                type: 'textbox',
+                                name: 'number',
+                                label: 'Number of Slides'
+                            }],
+                            onsubmit: function (e) {
+                                if (e.data.number === '' || isNaN(e.data.number)) {
+                                    editor.insertContent('[carousel][carouselslide][/carouselslide][carouselslide][/carouselslide][carouselslide][/carouselslide][/carousel]');
+                                } else {
+                                    var items = "";
+                                    for (var i = 0; i < e.data.number; i++) {
+                                        items += '[carouselslide]<h1>0</h1>[/carouselslide]';
+                                    }
+                                    editor.insertContent('[carousel]' + items + '[/carousel]');
+                                }
+                            }
+                        });
+                    }
+                },
+                {
                     text: 'Recent Posts',
                     value: '[recentposts]',
                     onclick: function () {
@@ -83,31 +129,6 @@
                                     number = ' number="' + e.data.number + '"';
                                 }
                                 editor.insertContent('[recentposts' + number + ']');
-                            }
-                        });
-                    }
-                },
-                {
-                    text: 'Carousel',
-                    value: '',
-                    onclick: function () {
-                        editor.windowManager.open({
-                            title: 'Map data',
-                            body: [{
-                                type: 'textbox',
-                                name: 'number',
-                                label: 'Number of Slides'
-                            }],
-                            onsubmit: function (e) {
-                                if (e.data.number === '' || isNaN(e.data.number)) {
-                                    editor.insertContent('[carousel][item][/item][item][/item][item][/item][/carousel]');
-                                } else {
-                                    var items = "";
-                                    for (var i = 0; i < e.data.number; i++) {
-                                        items += '[item][/item]';
-                                    }
-                                    editor.insertContent('[carousel]' + items + '[/carousel]');
-                                }
                             }
                         });
                     }
