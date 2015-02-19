@@ -50,14 +50,39 @@ All Shortcodes are documented in the Theme demos and can be included via a Page 
     <td></td>
 </tr>
 <tr>
+    <td><strong>Count up Stats</strong></td>
+    <td>
+        <pre>
+        <code>
+[stat]256[/stat]
+        </code>
+        </pre>
+Example with 4 stats in a grid:
+        <pre>
+        <code>
+[row]
+  [col][stat]657[/stat] Projects delivered[/col]
+  [col][stat]46[/stat] Awards[/col]
+  [col][stat]231[/stat] Fans[/col]
+  [col][stat]3756[/stat] Cups of coffee[/col]
+[/row]
+        </code>
+        </pre>
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
     <td><strong>Content Carousel</strong></td>
     <td>
         <pre>
         <code>
 [carousel]
-  [item]Slide 1. Lorem ipsum dolor sit amet...[/item]
-  [item]Slide 2. Lorem ipsum dolor sit amet...[/item]
-  [item]Slide 3. Lorem ipsum dolor sit amet...[/item]
+  [carouselslide]Slide 1. Lorem ipsum dolor sit amet...[/carouselslide]
+  [carouselslide]Slide 2. Lorem ipsum dolor sit amet...[/carouselslide]
+  [carouselslide]Slide 3. Lorem ipsum dolor sit amet...[/carouselslide]
   etc.
 [/carousel]
         </code>
@@ -174,6 +199,7 @@ All Shortcodes are documented in the Theme demos and can be included via a Page 
 
 * [Shortcake Plugin](https://github.com/fusioneng/Shortcake), [GPLv2+](https://github.com/fusioneng/Shortcake/blob/master/LICENSE)
 * [Bootstrap](https://github.com/twbs/bootstrap), [MIT licence](https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* [jquery-countTo](https://github.com/mhuggins/jquery-countTo), [MIT licence](https://github.com/mhuggins/jquery-countTo/blob/master/LICENSE.txt)
 * [Shuffle.js](https://github.com/Vestride/Shuffle), [MIT licence](https://github.com/Vestride/Shuffle/blob/master/LICENSE)
 * [Salvattore](https://github.com/rnmp/salvattore), [MIT licence](https://github.com/rnmp/salvattore/blob/master/LICENSE)
 * [Google Maps API](https://developers.google.com/maps), [Proprietary licence](https://developers.google.com/maps/licensing)

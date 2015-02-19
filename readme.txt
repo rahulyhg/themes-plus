@@ -3,7 +3,7 @@ Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 = What you get? =
 
 * `[Shortcodes]`
-* Google Maps, Contact form, Recent Posts, Carousel, Grid, etc.
+* Google Maps, Contact form, Recent Posts, Count up Stats, Carousel, Grid, etc.
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
 * TinyMCE Button
 * Page Builder
@@ -49,7 +49,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Frequently Asked Questions ==
 
 = Which modules are included? How can I add them to a page? =
-* __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Content Carousels, Bootstrap Column Grid
+* __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Count up Stats, Content Carousels, Bootstrap Column Grid
   * _Use the them.es+ button in the TinyMCE Editor to add a module on the page_
 * __WordPress Standard Image Gallery hooks:__ Gallery Grids, Image Carousels, Panzoom (Ken Burns) Slider, Portfolio Filter
   * _Gallery hooks can be activated by creating a new Gallery, adding images and selecting the desired "Type" in the settings_
@@ -68,6 +68,9 @@ Useful WordPress Add-ons for Themes built with Bootstrap
   
 == Upgrade Notice ==
 
+= 1.1.2 =
+* Important change: For consistency reasons the inner Content Carousel shortcode [item] got replaced with [carouselslide]
+
 = 1.1.1 =
 * Support for custom Marker images in Maps
 
@@ -76,6 +79,11 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.2 =
+* New feature: Count up Stats shortcode `[stat]123456[/stat]`
+* Changes: Content Carousel shortcode pattern `[carousel][carouselslide]...[/carouselslide][carouselslide]...[/carouselslide][/carousel]`
+* Updates: Shortcake Plugin, Minor CSS changes in Gallery Grids (fixed glitch w/ Twentyfourteen Theme)
 
 = 1.1.1 =
 * New feature: Maps now support a Marker image URL attribute, Contact form and Map shortcodes now allow custom class/style attributes
