@@ -54,17 +54,17 @@ All Shortcodes are documented in the Theme demos and can be included via a Page 
     <td>
         <pre>
         <code>
-[stat]256[/stat]
+[countup]256[/countup]
         </code>
         </pre>
 Example with 4 stats in a grid:
         <pre>
         <code>
 [row]
-  [col][stat]657[/stat] Projects delivered[/col]
-  [col][stat]46[/stat] Awards[/col]
-  [col][stat]231[/stat] Fans[/col]
-  [col][stat]3756[/stat] Cups of coffee[/col]
+  [col][countup]657[/countup] Projects delivered[/col]
+  [col][countup]46[/countup] Awards[/col]
+  [col][countup]231[/countup] Fans[/col]
+  [col][countup]3756[/countup] Cups of coffee[/col]
 [/row]
         </code>
         </pre>

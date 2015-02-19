@@ -81,7 +81,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Changelog ==
 
 = 1.1.2 =
-* New feature: Count up Stats shortcode `[stat]123456[/stat]`
+* New feature: Count up Stats shortcode `[countup]123456[/countup]`
 * Changes: Content Carousel shortcode pattern `[carousel][carouselslide]...[/carouselslide][carouselslide]...[/carouselslide][/carousel]`
 * Updates: Shortcake Plugin, Minor CSS changes in Gallery Grids (fixed glitch w/ Twentyfourteen Theme)
 

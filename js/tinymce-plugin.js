@@ -67,22 +67,22 @@
                     ]
                 },
                 {
-                    text: 'Stats Counter',
+                    text: 'Count up',
                     value: '',
                     onclick: function () {
                         editor.windowManager.open({
-                            title: 'Stats Counter',
+                            title: 'Count up',
                             body: [{
                                 type: 'textbox',
                                 name: 'number',
-                                label: 'Count to (Number)'
+                                label: 'Count up to (Number)'
                             }],
                             onsubmit: function (e) {
                                 var number = "";
                                 if (e.data.number !== '' || !isNaN(e.data.number)) {
                                     number = e.data.number;
                                 }
-                                editor.insertContent('[stat]' + number + '[/stat]');
+                                editor.insertContent('[countup]' + number + '[/countup]');
                             }
                         });
                     }

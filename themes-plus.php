@@ -323,16 +323,16 @@ if ( !class_exists("themesPlus") ) {
          * Stats Counter: JQuery Plugin + Code initialized in "themesPlus_init"
          * 
          * Shortcode:
-         * [stat]###[/stat]
+         * [countup]###[/countup]
          */
 
-            // Number: [stat]###[/stat]
-            function themes_stats_shortcode( $atts = array(), $content = null ) {
+            // Number: [countup]###[/countup]
+            function themes_countup_shortcode( $atts = array(), $content = null ) {
                 
-                return '<h3 class="stat h1" data-to="' . do_shortcode( shortcode_unautop( $content ) ) .'" data-speed="2500">' . do_shortcode( shortcode_unautop( $content ) ) .'</h3>'; // If $content contains a shortcode, that code will get processed
+                return '<h3 class="countup h1" data-to="' . do_shortcode( shortcode_unautop( $content ) ) .'" data-speed="2500">' . do_shortcode( shortcode_unautop( $content ) ) .'</h3>'; // If $content contains a shortcode, that code will get processed
                 
             }
-            add_shortcode( 'stat', 'themes_stats_shortcode' );
+            add_shortcode( 'countup', 'themes_countup_shortcode' );
             
         /**
          * Register a TinyMCE UI for the Shortcode
@@ -340,7 +340,7 @@ if ( !class_exists("themesPlus") ) {
          */
             if (function_exists('shortcode_ui_register_for_shortcode')) {
                 shortcode_ui_register_for_shortcode(
-                    'stat',
+                    'countup',
                     array(
                         'label' => 'Number',
                         //'listItemImage' => 'dashicons-editor-quote',
