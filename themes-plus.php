@@ -28,12 +28,36 @@ if ( !class_exists("themesPlus") ) {
                 
                 wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont
                 
-                // Initialize jQuery countTo Plugin if has shortcode
-                wp_register_script( 'counttoinit', plugins_url( '/js/countto.min.js', __FILE__ ), array('jquery'), '1.0', false );
-                wp_enqueue_script( 'counttoinit' );
-                
             }
             add_action('init', 'themesPlus_init');
+            
+            
+            /**
+             * Only load Javascript if shortcode exists
+             * Thanks https://pippinsplugins.com/load-scripts-if-post-has-short-code
+             */
+            function themesPlus_check_posts_for_shortcode($posts) {
+                if ( empty($posts) ) {
+                    return $posts;
+                }
+                
+                $found = false;
+                
+                foreach ($posts as $post) {
+                    if ( shortcode_exists( 'countup' ) && stripos($post->post_content, '[countup') ) {
+                        $found = true;
+                        break;
+                    }
+                }
+
+                if ($found) {
+                    wp_register_script( 'counttoinit', plugins_url( '/js/countto.min.js', __FILE__ ), array('jquery'), '1.0', false );
+                    wp_enqueue_script( 'counttoinit' );
+                }
+                return $posts;
+            }
+            add_action('the_posts', 'themesPlus_check_posts_for_shortcode');
+            
             
             function themesPlus_load_textdomain() {
                 
