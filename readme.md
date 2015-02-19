@@ -52,15 +52,11 @@ All Shortcodes are documented in the Theme demos and can be included via a Page 
 <tr>
     <td><strong>Count up Stats</strong></td>
     <td>
+        <pre><code>[countup]256[/countup]</code></pre>
+Common example using the grid:
         <pre>
         <code>
-[countup]256[/countup]
-        </code>
-        </pre>
-Example with 4 stats in a grid:
-        <pre>
-        <code>
-[row]
+[row class="text-center"]
   [col][countup]657[/countup] Projects delivered[/col]
   [col][countup]46[/countup] Awards[/col]
   [col][countup]231[/countup] Fans[/col]
