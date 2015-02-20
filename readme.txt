@@ -1,6 +1,6 @@
 === them.es Plus ===
 Contributors: them.es
-Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, contact form, grid
+Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, count down, count up, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.1
 Stable tag: 1.1.2
@@ -19,7 +19,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 = What you get? =
 
 * `[Shortcodes]`
-* Google Maps, Contact form, Recent Posts, Count up Stats, Carousel, Grid, etc.
+* Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
 * TinyMCE Button
 * Page Builder
@@ -49,7 +49,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Frequently Asked Questions ==
 
 = Which modules are included? How can I add them to a page? =
-* __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Count up Stats, Content Carousels, Bootstrap Column Grid
+* __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Content Carousels, Bootstrap Column Grid
   * _Use the them.es+ button in the TinyMCE Editor to add a module on the page_
 * __WordPress Standard Image Gallery hooks:__ Gallery Grids, Image Carousels, Panzoom (Ken Burns) Slider, Portfolio Filter
   * _Gallery hooks can be activated by creating a new Gallery, adding images and selecting the desired "Type" in the settings_
@@ -81,7 +81,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Changelog ==
 
 = 1.1.2 =
-* New feature: Count up Stats shortcode `[countup]123456[/countup]`
+* New features: Count down to date shortcode `[countdown]January 01, 2020 12:00:00[/countdown]`, Count up Stats shortcode `[countup]123456[/countup]`
 * Changes: Content Carousel shortcode pattern `[carousel][carouselslide]...[/carouselslide][carouselslide]...[/carouselslide][/carousel]`
 * Updates: Shortcake Plugin, Minor CSS changes in Gallery Grids (fixed glitch w/ Twentyfourteen Theme)
 

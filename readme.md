@@ -12,7 +12,7 @@ For more information, check out [them.es](http://them.es/).
 ## What's included?
 * Shortcodes
 * Page Builder / TinyMCE Plugin
-* Bootstrap components: Grid, Galleries, Carousels
+* Bootstrap components: Grid, Galleries, Carousels, Count down to date, Funny Count up stats
 * WordPress hooks: Transform Standard WordPress Galleries into slideshows and even more
 * Portfolio Filter
 * Google Maps
@@ -43,6 +43,16 @@ All Shortcodes are documented in the Theme demos and can be included via a Page 
     <td>
         <pre><code>[recentposts]</code></pre>
         <pre><code>[recentposts posts="10"]</code></pre>
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><strong>Count down to Date</strong></td>
+    <td>
+        <pre><code>[countdown]January 01, 2020 12:00:00[/countdown]</code></pre>
     </td>
 </tr>
 <tr>
@@ -196,6 +206,7 @@ Common example using the grid:
 * [Shortcake Plugin](https://github.com/fusioneng/Shortcake), [GPLv2+](https://github.com/fusioneng/Shortcake/blob/master/LICENSE)
 * [Bootstrap](https://github.com/twbs/bootstrap), [MIT licence](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 * [jquery-countTo](https://github.com/mhuggins/jquery-countTo), [MIT licence](https://github.com/mhuggins/jquery-countTo/blob/master/LICENSE.txt)
+* [jCountdown](https://github.com/tomgrohl/jCountdown), [MIT licence](https://github.com/tomgrohl/jCountdown/blob/master/license.txt)
 * [Shuffle.js](https://github.com/Vestride/Shuffle), [MIT licence](https://github.com/Vestride/Shuffle/blob/master/LICENSE)
 * [Salvattore](https://github.com/rnmp/salvattore), [MIT licence](https://github.com/rnmp/salvattore/blob/master/LICENSE)
 * [Google Maps API](https://developers.google.com/maps), [Proprietary licence](https://developers.google.com/maps/licensing)
