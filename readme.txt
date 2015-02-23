@@ -86,7 +86,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * New feature: Animated Bootstrap Progress bar `[progressbar]40[/progressbar]`
 
 = 1.1.2 =
-* New features: Count down to date shortcode `[countdown]January 01, 2020 12:00:00[/countdown]`, Count up Stats shortcode `[countup]123456[/countup]`
+* New features: Countdown Timer shortcode `[timer]January 01, 2020 12:00:00[/timer]`, Count up Stats shortcode `[countup]123456[/countup]`
 * Changes: Content Carousel shortcode pattern `[carousel][carouselslide]...[/carouselslide][carouselslide]...[/carouselslide][/carousel]`
 * Updates: Shortcake Plugin, Minor CSS changes in Gallery Grids (fixed glitch w/ Twentyfourteen Theme)
 

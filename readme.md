@@ -50,9 +50,9 @@ All Add-ons are documented under [http://them.es/plus](http://them.es/plus)
     <td></td>
 </tr>
 <tr>
-    <td><strong>Count down to Date</strong></td>
+    <td><strong>Countdown Timer to a specific Date</strong></td>
     <td>
-        <pre><code>[countdown]January 01, 2020 12:00:00[/countdown]</code></pre>
+        <pre><code>[timer]January 01, 2020 12:00:00[/timer]</code></pre>
     </td>
 </tr>
 <tr>
