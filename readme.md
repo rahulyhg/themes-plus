@@ -4,7 +4,7 @@
 
 Pull requests are always welcome!
 
-For more information, check out [them.es](http://them.es/).
+For more information, check out [http://them.es/plus](http://them.es/plus).
 
 ![Alt text](/screenshot.png?raw=true)
 
@@ -23,8 +23,8 @@ For more information, check out [them.es](http://them.es/).
 * Bootstrap framework (needs to be included in your Theme)
 
 
-## Shortcodes
-All Shortcodes are documented in the Theme demos and can be included via a Page builder button in TinyMCE.
+## Documentation
+All Add-ons are documented under [http://them.es/plus](http://them.es/plus)
 
 <table>
 <thead>

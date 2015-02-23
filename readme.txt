@@ -1,9 +1,9 @@
 === them.es Plus ===
 Contributors: them.es
-Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, count down, count up, contact form, grid
+Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, count down, count up, progressbar, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
     
 = What you get? =
 
+* All Add-ons are documented under [http://them.es/plus](http://them.es/plus/ "them.es+") 
 * `[Shortcodes]`
 * Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
@@ -32,7 +33,7 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 = Feedback/Help/Contribution? =
 
-* The Development of this Plugin can be followed via a GitHub repository <3 and are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es](https://github.com/them-es "GitHub")
+* The Development of this Plugin can be followed via GitHub <3 and are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es](https://github.com/them-es "GitHub")
 
 == Screenshots ==
 
@@ -48,11 +49,12 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 == Frequently Asked Questions ==
 
-= Which modules are included? How can I add them to a page? =
+= What modules are included? Where can I find the Developer Documentation? =
+* Have a look at the demos/docs here [http://them.es/plus](http://them.es/plus "them.es+")
 * __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Content Carousels, Bootstrap Column Grid
-  * _Use the them.es+ button in the TinyMCE Editor to add a module on the page_
+  * _Simply use the them.es+ button in the TinyMCE Editor to add a module on the page_
 * __WordPress Standard Image Gallery hooks:__ Gallery Grids, Image Carousels, Panzoom (Ken Burns) Slider, Portfolio Filter
-  * _Gallery hooks can be activated by creating a new Gallery, adding images and selecting the desired "Type" in the settings_
+  * _Gallery hooks can be activated by creating a new Gallery, adding images and selecting the "Type" in the Gallery settings_
 * __Portfolio Filter:__
   * _Upload all images which should appear in the Portfolio and name/tag them accordingly. Create a new WordPress Gallery and select Type "Portfolio Filter"_
 
@@ -79,6 +81,9 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.3 =
+* New feature: Animated Bootstrap Progress bar `[progressbar]40[/progressbar]`
 
 = 1.1.2 =
 * New features: Count down to date shortcode `[countdown]January 01, 2020 12:00:00[/countdown]`, Count up Stats shortcode `[countup]123456[/countup]`
