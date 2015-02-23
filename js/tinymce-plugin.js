@@ -242,7 +242,7 @@
                                         { text: '56', value: '56' },
                                         { text: '57', value: '57' },
                                         { text: '58', value: '58' },
-                                        { text: '59', value: '59' },
+                                        { text: '59', value: '59' }
                                     ]
                                 }],
                             onsubmit: function (e) {
@@ -284,6 +284,55 @@
                                     number = e.data.number;
                                 }
                                 editor.insertContent('[countup]' + number + '[/countup]');
+                            }
+                        });
+                    }
+                },
+                {
+                    text: 'Progress bar',
+                    value: '',
+                    onclick: function () {
+                        editor.windowManager.open({
+                            title: 'Progress bar',
+                            body: [
+                                {
+                                    type: 'textbox',
+                                    name: 'number',
+                                    label: 'Percentage'
+                                },
+                                {
+                                    type: 'listbox',
+                                    name: 'color',
+                                    label: 'Select color:',
+                                    onselect: function(e) {
+
+                                    },
+                                    'values': [
+                                      { text: 'blue', value: 'blue' },
+                                      { text: 'green', value: 'green' },
+                                      { text: 'lightblue', value: 'lightblue' },
+                                      { text: 'yellow', value: 'yellow' },
+                                      { text: 'red', value: 'red' }
+                                    ]
+                                },
+                                {
+                                    type: 'checkbox',
+                                    name: 'label',
+                                    label: 'Show Label'
+                                }
+                            ],
+                            onsubmit: function (e) {
+                                var number = "", color = "", label = "";
+                                if (e.data.number !== '' || !isNaN(e.data.number)) {
+                                    number = e.data.number;
+                                }
+                                if (e.data.color !== '') {
+                                    color = ' color="' + e.data.color + '"';
+                                }
+                                if (e.data.label === true) {
+                                    label = ' label="true"';
+                                }
+                                editor.insertContent('[progressbar' + color + label + ']' + number + '[/progressbar]');
                             }
                         });
                     }

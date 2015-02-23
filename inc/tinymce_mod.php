@@ -21,7 +21,7 @@
     add_action('admin_head', 'themes_tinymce_button');
 
     function themes_add_tinymce_plugin($plugin_array) {
-        $plugin_array['themes_tinymce_button'] = plugins_url( '/js/tinymce-plugin.js', dirname(__FILE__) );
+        $plugin_array['themes_tinymce_button'] = plugins_url( '/js/tinymce-plugin.min.js', dirname(__FILE__) );
         return $plugin_array;
     }
 
