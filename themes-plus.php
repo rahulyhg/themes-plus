@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -61,7 +61,41 @@ if ( !class_exists("themesPlus") ) {
             if ( is_readable($tinymce_mod) ) {
                 require_once($tinymce_mod);
             }
+			
+			
+			/**
+             * Customizer API: Google Analytics, Map Styles, ...
+             */
+            // Include file
+            $plugin_customizer = plugin_dir_path( __FILE__ ) . '/inc/customizer.php';
             
+            if ( is_readable($plugin_customizer) ) {
+                require_once($plugin_customizer);
+            }
+            
+			
+			/**
+			 * Google Analytics
+			 */
+			global $ga_trackingcode;
+			$ga_trackingcode = trim( get_theme_mod('google_analytics') ); // see customizer.php
+			function themes_plus_add_googleanalytics() {
+				global $ga_trackingcode;
+				echo "
+				<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+					ga('create', '" . $ga_trackingcode . "', 'auto');
+					ga('send', 'pageview');
+				</script>
+				";
+			}
+			if( isset($ga_trackingcode) && $ga_trackingcode != "" ) {
+				add_action('wp_footer', 'themes_plus_add_googleanalytics', 100);
+			}
+
             
             /**
              * Transform Standard Image Galleries
@@ -333,9 +367,15 @@ if ( !class_exists("themesPlus") ) {
                 wp_register_script( 'timerinit', plugins_url( '/js/countdown.min.js', __FILE__ ), array('jquery'), '1.0', false );
                 wp_enqueue_script( 'timerinit' );
                 
+				// Get Attributes
+                extract(shortcode_atts(array(
+                    'class' => '',
+                    'style' => ''
+                ), $atts));
+				
                 $datetime = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
                 
-                return '<h3 id="timer" class="h1 timer" data-to="' . $datetime .'" data-offset="' . get_option('gmt_offset') . '" data-rtl="' . ( is_rtl() ? 'true' : 'false' ) . '">' . $datetime . ', UTC ' . get_option('gmt_offset') . '</h3>';
+                return '<h3 id="timer" class="h1 timer' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' data-to="' . $datetime .'" data-offset="' . get_option('gmt_offset') . '" data-rtl="' . ( is_rtl() ? 'true' : 'false' ) . '">' . $datetime . ', UTC ' . get_option('gmt_offset') . '</h3>';
                 
             }
             add_shortcode( 'timer', 'themes_timer_shortcode' );
@@ -358,6 +398,18 @@ if ( !class_exists("themesPlus") ) {
                                 'type'        => 'text',
                                 'placeholder' => '',
                             ),
+							array(
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
                         ),
                     )
                 );
@@ -376,10 +428,16 @@ if ( !class_exists("themesPlus") ) {
                 
                 wp_register_script( 'counttoinit', plugins_url( '/js/countto.min.js', __FILE__ ), array('jquery'), '1.0', false );
                 wp_enqueue_script( 'counttoinit' );
+				
+				// Get Attributes
+                extract(shortcode_atts(array(
+                    'class' => '',
+                    'style' => ''
+                ), $atts));
                 
                 $timer = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
                 
-                return '<h3 class="countup h1" data-to="' . $timer .'" data-speed="2500">' . $timer .'</h3>';
+                return '<h3 class="countup h1' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' data-to="' . $timer .'" data-speed="2500">' . $timer .'</h3>';
                 
             }
             add_shortcode( 'countup', 'themes_countup_shortcode' );
@@ -400,6 +458,18 @@ if ( !class_exists("themesPlus") ) {
                                 'attr'        => 'content',
                                 'type'        => 'number',
                                 'placeholder' => '100',
+                            ),
+							array(
+                                'label'       => 'Class',
+                                'attr'        => 'class',
+                                'type'        => 'text',
+                                'placeholder' => '',
+                            ),
+                            array(
+                                'label'       => 'CSS',
+                                'attr'        => 'style',
+                                'type'        => 'text',
+                                'placeholder' => '',
                             ),
                         ),
                     )
@@ -610,6 +680,8 @@ if ( !class_exists("themesPlus") ) {
                 );
             }
             
+			
+
 
         /**
          * Grid

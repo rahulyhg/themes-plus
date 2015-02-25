@@ -19,10 +19,15 @@
         // Use global settings (Theme Customization API)
         $latlng = trim( get_theme_mod('map_latlng') );
     endif;
-
+	
+    if ( empty($zoom) ):
+        // Use global settings (Theme Customization API)
+        $zoom = trim( get_theme_mod('map_zoom', '13') );
+    endif;
+	
     if ( empty($marker) ):
         // Use global settings (Theme Customization API)
-        $marker = trim( get_theme_mod('map_marker') );
+        $marker = trim( get_theme_mod('map_markerimage') );
     endif;
 ?>
 

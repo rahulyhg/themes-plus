@@ -1,0 +1,174 @@
+<?php
+
+/**
+ * http://codex.wordpress.org/Theme_Customization_API
+ *
+ * How do I "output" custom theme modification settings? http://codex.wordpress.org/Function_Reference/get_theme_mod
+ * echo get_theme_mod( 'copyright_info' );
+ * or: echo get_theme_mod( 'copyright_info', 'Default (c) Copyright Info if nothing provided' );
+ *
+ * "sanitize_callback": http://codex.wordpress.org/Data_Validation
+ */
+
+/**
+ * Implement Theme Customizer additions and adjustments.
+ */
+
+function themes_plus_customizer( $wp_customize ) {
+	
+/*
+ * Initialize sections
+ */
+	
+	$wp_customize->add_section( 'themes_plus_section', array(
+		'title'          => 'them.es Plus',
+		'priority'       => 10000,
+	) );
+    
+/*
+ * Section: them.es+
+ */
+    
+	/*
+     * Marker image
+     */
+    // Header Logo
+    $wp_customize->add_setting('map_markerimage', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'map_markerimage', array(
+        'label'       => 'Upload Marker image',
+        'description' => '128x128px',
+        'section'  => 'themes_plus_section',
+        'settings' => 'map_markerimage',
+        'priority' => 1,
+    )));
+	
+	/*
+     * Lat/Lng Coordinates/Zoom
+     */
+	$wp_customize->add_setting( 'map_latlng', array(
+		'default'     => '',
+        'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'map_latlng', array(
+		'label'       => 'Map: Lat/Lng',
+		'description' => '0.0000,0.0000',
+		'section'     => 'themes_plus_section',
+		'type'        => 'text',
+		'priority'    => 2,
+        'settings'    => 'map_latlng',
+	) );
+    
+    $wp_customize->add_setting( 'map_zoom', array(
+		'default'     => '13',
+        'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'map_zoom', array(
+		'label'       => 'Map: Zoomfactor',
+		'description' => 'Default: 13',
+		'section'     => 'themes_plus_section',
+		'type'        => 'select',
+		'priority'    => 3,
+		'choices' => array(
+            '1'      => '1',
+			'2'      => '2',
+			'3'      => '3',
+            '4'      => '4',
+            '5'      => '5',
+            '6'      => '6',
+            '7'      => '7',
+			'8'      => '8',
+            '9'      => '9',
+            '10'     => '10',
+			'11'     => '11',
+			'12'     => '12',
+            '13'     => '13',
+            '14'     => '14',
+            '15'     => '15',
+            '16'     => '16',
+			'17'     => '17',
+            '18'     => '18',
+            '19'     => '19',
+            '20'     => '20',
+            '21'     => '21'
+		),
+        'settings'   => 'map_zoom',
+	) );
+    
+    /*
+     * Map styles
+     */
+	$wp_customize->add_setting( 'map_styles', array(
+		'default'     => '',
+        'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'map_styles', array(
+		'label'       => 'Map: Styles',
+		'description' => 'https://developers.google.com/maps/documentation/javascript/styling',
+		'section'     => 'themes_plus_section',
+		'type'        => 'textarea',
+		'priority'    => 4,
+        'settings'    => 'map_styles',
+	) );
+    
+    /*
+     * Google Analytics Tracking Code
+     */
+	$wp_customize->add_setting( 'google_analytics', array(
+		'default'     => '',
+        'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'google_analytics', array(
+		'label'       => 'Google Analytics Tracking Code',
+		'description' => 'UA-0000000-1',
+		'section'     => 'themes_plus_section',
+		'type'        => 'text',
+		'priority'    => 5,
+        'settings'    => 'google_analytics',
+	) );
+    
+    /*
+     * Favicon: Hopefully will soon be a Core feature (see: https://core.trac.wordpress.org/ticket/16434)
+     */
+    /*$wp_customize->add_setting('favicon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'favicon', array(
+        'label'    => __('Upload Favicon', 'them-es'),
+        'section'  => 'themes_plus_section',
+        'priority' => 9,
+        'settings' => 'favicon',
+    )));*/
+    
+    /*
+     * Touch Icon: Hopefully will soon be a Core feature (see: https://core.trac.wordpress.org/ticket/16434)
+     * http://codex.wordpress.org/Class_Reference/WP_Image_Editor
+     * 1. Convert to png
+     * 2. Resize to "152x152", "120x120", "76x76", "57x57"
+     * 3. Rename to "apple-touch-icon-###.png"
+     */
+    /*$wp_customize->add_setting('touchicon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'touchicon', array(
+        'label'    => __('Upload Touch Icon (&gt;152x152)', 'them-es'),
+        'section'  => 'themes_plus_section',
+        'priority' => 10,
+        'settings' => 'touchicon',
+    )));*/
+	
+}
+add_action( 'customize_register', 'themes_plus_customizer' );
+
+
+/**
+ * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
+ */
+function themes_plus_customizer_preview_js() {
+	wp_enqueue_script( 'customizer', plugin_dir_path( __FILE__ ) . '/inc/customizer.js', array( 'jquery' ), null, true );
+}
+add_action( 'customize_preview_init', 'themes_plus_customizer_preview_js' );
