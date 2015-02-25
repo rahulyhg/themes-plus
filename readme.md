@@ -2,20 +2,22 @@
 
 **them.es<sup>+</sup>** is a WordPress Plugin that brings useful **Modules** and **Features** to WordPress *the WordPress way*. It has been developed for them.es Themes, but also works on other Themes built with Bootstrap.
 
-Pull requests are always welcome!
-
-For more information, check out [http://them.es/plus](http://them.es/plus).
+For more information, check out [http://them.es/plus](http://them.es/plus)
 
 ![Alt text](/screenshot.png?raw=true)
 
 
 ## What's included?
-* Shortcodes
-* Page Builder / TinyMCE Plugin
+* [Shortcodes] and Customization
+* TinyMCE Plugin
+* Customizer API
 * Bootstrap components: Grid, Galleries, Carousels, Count down to date, Funny Count up stats
 * WordPress hooks: Transform Standard WordPress Galleries into slideshows and even more
 * Portfolio Filter
+* Count up, Countdown Timer
+* Recent Posts
 * Google Maps
+* Google Analytics
 * Simple Contact form
 
 

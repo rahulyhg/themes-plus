@@ -1,9 +1,9 @@
 === them.es Plus ===
 Contributors: them.es
-Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, count down, count up, progressbar, contact form, grid
+Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,12 +18,11 @@ Useful WordPress Add-ons for Themes built with Bootstrap
     
 = What you get? =
 
-* All Add-ons are documented under [http://them.es/plus](http://them.es/plus/ "them.es+") 
-* `[Shortcodes]`
-* Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
+* `[Shortcodes]` and Customization
+* Demos and Docs can be found under [http://them.es/plus](http://them.es/plus/ "them.es+")
+* Google Maps, Google Analytics, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
 * TinyMCE Button
-* Page Builder
 * Theme Customization API (on them.es Themes!)
 
 = Compatibility? =
@@ -50,21 +49,27 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 == Frequently Asked Questions ==
 
 = What modules are included? Where can I find the Developer Documentation? =
-* Have a look at the demos/docs here [http://them.es/plus](http://them.es/plus "them.es+")
-* __Custom Shortcodes:__ Google Maps, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Content Carousels, Bootstrap Column Grid
-  * _Simply use the them.es+ button in the TinyMCE Editor to add a module on the page_
-* __WordPress Standard Image Gallery hooks:__ Gallery Grids, Image Carousels, Panzoom (Ken Burns) Slider, Portfolio Filter
-  * _Gallery hooks can be activated by creating a new Gallery, adding images and selecting the "Type" in the Gallery settings_
-* __Portfolio Filter:__
-  * _Upload all images which should appear in the Portfolio and name/tag them accordingly. Create a new WordPress Gallery and select Type "Portfolio Filter"_
+
+* __Demos and Docs can be found here:__
+  * [http://them.es/plus](http://them.es/plus "them.es+")
+* __Modules__ can be added and setup using the them.es+ button in the TinyMCE Editor
+* __Image Galleries__, __Slideshows__ and the __Portfolio__ are built upon WordPress galleries
+
+= How can I add Image Galleries and slideshows? =
+* Gallery hooks can be activated by __Creating a new WordPress Gallery__, adding images and selecting the __Type__ in the Gallery settings
+
+= How can I setup a Portfolio Filter? =
+* Upload all images which should appear in the Portfolio
+* __Name__ and __Tag__ them accordingly. Images are grouped in the filter by using the same tag
+* Create a new WordPress Gallery and select Type __Portfolio Filter__
 
 = Does this Plugin work with my Theme? =
 * The Plugin has been primarily developed to bring additional features into [them.es](http://them.es/ "them.es") Themes
-* If your WordPress Theme has been built with Bootstrap and if all Bootstrap components are included in your Theme the Plugin should work out-of-the-box
+* But it should work out-of-the-box if your WordPress Theme has been built with Bootstrap and if all Bootstrap components are included in your Theme
 
 = Where can I get help? =
 * You can ask questions in the Support forums
-  * [https://github.com/them-es](https://github.com/them-es "GitHub")
+  * [https://wordpress.org/support/plugin/themes-plus](https://wordpress.org/support/plugin/themes-plus "WordPress Support")
   * [http://them.es/support](http://them.es/support "them.es Support")
 * WordPress developers are welcome to help us improve the Plugin via [GitHub](https://github.com/them-es "GitHub")
   
@@ -81,6 +86,9 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.4 =
+* WordPress Customizer API: Google Analytics, Google Maps (Add a Marker image, Default latlng/zoom, Map styles)
 
 = 1.1.3 =
 * New feature: Animated Bootstrap Progress bar `[progressbar]40[/progressbar]`
