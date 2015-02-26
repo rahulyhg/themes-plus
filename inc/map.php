@@ -1,5 +1,5 @@
 <?php
-    $map_styles = trim( get_theme_mod('map_styles') );
+    $map_styles = trim( get_theme_mod('themes_plus_map_styles') );
 
     if ( isset($map_styles) && $map_styles != "" ):
         echo '<script>var styles = ' . $map_styles . '</script>';
@@ -17,17 +17,17 @@
     
     if ( empty($latlng) ):
         // Use global settings (Theme Customization API)
-        $latlng = trim( get_theme_mod('map_latlng') );
+        $latlng = trim( get_theme_mod('themes_plus_map_latlng') );
     endif;
 	
     if ( empty($zoom) ):
         // Use global settings (Theme Customization API)
-        $zoom = trim( get_theme_mod('map_zoom', '13') );
+        $zoom = trim( get_theme_mod('themes_plus_map_zoom', '13') );
     endif;
 	
     if ( empty($marker) ):
         // Use global settings (Theme Customization API)
-        $marker = trim( get_theme_mod('map_markerimage') );
+        $marker = trim( get_theme_mod('themes_plus_map_markerimage') );
     endif;
 ?>
 

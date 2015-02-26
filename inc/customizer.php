@@ -5,7 +5,7 @@
  *
  * How do I "output" custom theme modification settings? http://codex.wordpress.org/Function_Reference/get_theme_mod
  * echo get_theme_mod( 'copyright_info' );
- * or: echo get_theme_mod( 'copyright_info', 'Default (c) Copyright Info if nothing provided' );
+ * or: echo get_theme_mod( 'copyright_info', 'Default &copy; Copyright Info if nothing provided' );
  *
  * "sanitize_callback": http://codex.wordpress.org/Data_Validation
  */
@@ -21,7 +21,7 @@ function themes_plus_customizer( $wp_customize ) {
  */
 	
 	$wp_customize->add_section( 'themes_plus_section', array(
-		'title'          => 'them.es Plus',
+		'title'          => 'them.es Plus &oplus;',
 		'priority'       => 10000,
 	) );
     
@@ -33,39 +33,39 @@ function themes_plus_customizer( $wp_customize ) {
      * Marker image
      */
     // Header Logo
-    $wp_customize->add_setting('map_markerimage', array(
+    $wp_customize->add_setting('themes_plus_map_markerimage', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ));
-    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'map_markerimage', array(
-        'label'       => 'Upload Marker image',
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'themes_plus_map_markerimage', array(
+        'label'       => 'Map: Upload Marker image',
         'description' => '128x128px',
         'section'  => 'themes_plus_section',
-        'settings' => 'map_markerimage',
+        'settings' => 'themes_plus_map_markerimage',
         'priority' => 1,
     )));
 	
 	/*
      * Lat/Lng Coordinates/Zoom
      */
-	$wp_customize->add_setting( 'map_latlng', array(
+	$wp_customize->add_setting( 'themes_plus_map_latlng', array(
 		'default'     => '',
         'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( 'map_latlng', array(
+	$wp_customize->add_control( 'themes_plus_map_latlng', array(
 		'label'       => 'Map: Lat/Lng',
 		'description' => '0.0000,0.0000',
 		'section'     => 'themes_plus_section',
 		'type'        => 'text',
 		'priority'    => 2,
-        'settings'    => 'map_latlng',
+        'settings'    => 'themes_plus_map_latlng',
 	) );
     
-    $wp_customize->add_setting( 'map_zoom', array(
+    $wp_customize->add_setting( 'themes_plus_map_zoom', array(
 		'default'     => '13',
         'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( 'map_zoom', array(
+	$wp_customize->add_control( 'themes_plus_map_zoom', array(
 		'label'       => 'Map: Zoomfactor',
 		'description' => 'Default: 13',
 		'section'     => 'themes_plus_section',
@@ -94,71 +94,73 @@ function themes_plus_customizer( $wp_customize ) {
             '20'     => '20',
             '21'     => '21'
 		),
-        'settings'   => 'map_zoom',
+        'settings'   => 'themes_plus_map_zoom',
 	) );
     
     /*
      * Map styles
      */
-	$wp_customize->add_setting( 'map_styles', array(
+	$wp_customize->add_setting( 'themes_plus_map_styles', array(
 		'default'     => '',
         'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( 'map_styles', array(
+	$wp_customize->add_control( 'themes_plus_map_styles', array(
 		'label'       => 'Map: Styles',
 		'description' => 'https://developers.google.com/maps/documentation/javascript/styling',
 		'section'     => 'themes_plus_section',
 		'type'        => 'textarea',
 		'priority'    => 4,
-        'settings'    => 'map_styles',
+        'settings'    => 'themes_plus_map_styles',
 	) );
     
     /*
      * Google Analytics Tracking Code
      */
-	$wp_customize->add_setting( 'google_analytics', array(
+	$wp_customize->add_setting( 'themes_plus_google_analytics', array(
 		'default'     => '',
         'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( 'google_analytics', array(
+	$wp_customize->add_control( 'themes_plus_google_analytics', array(
 		'label'       => 'Google Analytics Tracking Code',
 		'description' => 'UA-0000000-1',
 		'section'     => 'themes_plus_section',
 		'type'        => 'text',
 		'priority'    => 5,
-        'settings'    => 'google_analytics',
+        'settings'    => 'themes_plus_google_analytics',
 	) );
     
     /*
-     * Favicon: Hopefully will soon be a Core feature (see: https://core.trac.wordpress.org/ticket/16434)
+     * Favicon: Core feature soon? (see: https://core.trac.wordpress.org/ticket/16434)
      */
-    /*$wp_customize->add_setting('favicon', array(
+    /*$wp_customize->add_setting('themes_plus_favicon', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ));
-    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'favicon', array(
-        'label'    => __('Upload Favicon', 'them-es'),
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'themes_plus_favicon', array(
+        'label'    => 'Upload Favicon',
         'section'  => 'themes_plus_section',
         'priority' => 9,
-        'settings' => 'favicon',
+        'settings' => themes_plus_'favicon',
     )));*/
     
     /*
-     * Touch Icon: Hopefully will soon be a Core feature (see: https://core.trac.wordpress.org/ticket/16434)
+     * Touch Icon: Core feature soon? (see: https://core.trac.wordpress.org/ticket/16434)
      * http://codex.wordpress.org/Class_Reference/WP_Image_Editor
-     * 1. Convert to png
+	 *
+	 * Todo:
+     * 1. Convert image source to png
      * 2. Resize to "152x152", "120x120", "76x76", "57x57"
      * 3. Rename to "apple-touch-icon-###.png"
      */
-    /*$wp_customize->add_setting('touchicon', array(
+    /*$wp_customize->add_setting('themes_plus_touchicon', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ));
-    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'touchicon', array(
-        'label'    => __('Upload Touch Icon (&gt;152x152)', 'them-es'),
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'themes_plus_touchicon', array(
+        'label'    => 'Upload Touch Icon (&gt;152x152px),
         'section'  => 'themes_plus_section',
         'priority' => 10,
-        'settings' => 'touchicon',
+        'settings' => 'themes_plus_touchicon',
     )));*/
 	
 }

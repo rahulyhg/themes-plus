@@ -78,7 +78,7 @@ if ( !class_exists("themesPlus") ) {
 			 * Google Analytics
 			 */
 			global $ga_trackingcode;
-			$ga_trackingcode = trim( get_theme_mod('google_analytics') ); // see customizer.php
+			$ga_trackingcode = trim( get_theme_mod('themes_plus_google_analytics') ); // see customizer.php
 			function themes_plus_add_googleanalytics() {
 				global $ga_trackingcode;
 				echo "
