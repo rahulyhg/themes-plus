@@ -23,7 +23,6 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * Google Maps, Google Analytics, Contact form, Recent Posts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
 * TinyMCE Button
-* Theme Customization API (on them.es Themes!)
 
 = Compatibility? =
 
@@ -32,7 +31,8 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 = Feedback/Help/Contribution? =
 
-* The Development of this Plugin can be followed via GitHub <3 and are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es](https://github.com/them-es "GitHub")
+* The Development of this Plugin can be followed via GitHub <3
+* We are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es](https://github.com/them-es "GitHub")
 
 == Screenshots ==
 

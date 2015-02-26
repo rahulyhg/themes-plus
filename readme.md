@@ -10,11 +10,12 @@ For more information, check out [http://them.es/plus](http://them.es/plus)
 ## What's included?
 * [Shortcodes] and Customization
 * TinyMCE Plugin
-* Customizer API
+* Customization: Customizer API
 * Bootstrap components: Grid, Galleries, Carousels, Count down to date, Funny Count up stats
 * WordPress hooks: Transform Standard WordPress Galleries into slideshows and even more
 * Portfolio Filter
-* Count up, Countdown Timer
+* Count up
+* Countdown Timer
 * Recent Posts
 * Google Maps
 * Google Analytics
