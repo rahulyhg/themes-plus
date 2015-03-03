@@ -2,6 +2,7 @@
 
 // Get Attributes
 extract(shortcode_atts(array(
+	'email' => '',
     'class' => '',
     'style' => ''
 ), $atts));
@@ -47,7 +48,12 @@ if ( isset($_POST['submitted']) && $_POST['submitted'] == true ) {
 			mail($contactEmail, $subject, $body, $headers); // Send a copy
 		}
 		
-		$adminEmail = get_bloginfo('admin_email');
+		if ( isset($email) && filter_var( $email, FILTER_VALIDATE_EMAIL ) != false ):
+			$adminEmail = $email;
+		else:
+			$adminEmail = get_bloginfo('admin_email');
+		endif;
+		
 		$subject =  $subject . " - " . $contactName;
 		$headers = "From: " . $contactName . "<" . $contactEmail . ">";
 		mail($adminEmail, $subject, $body, $headers); // Send to Admin
