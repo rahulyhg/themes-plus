@@ -1,12 +1,12 @@
 <?php
 /**
- * Shortcode UI
- * v0.2.0-dev
- * User Interface for adding shortcodes.
- * Fusion Engineering and community
- * http://next.fusion.net/tag/shortcode-ui/
- * shortcode-ui
- * GPL v2 or later
+ * Plugin Name: Shortcode UI
+ * Version: v0.2.0-dev
+ * Description: User Interface for adding shortcodes.
+ * Author: Fusion Engineering and community
+ * Author URI: http://next.fusion.net/tag/shortcode-ui/
+ * Text Domain: shortcode-ui
+ * License: GPL v2 or later
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
