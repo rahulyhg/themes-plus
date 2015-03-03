@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -44,10 +44,11 @@ if ( !class_exists("themesPlus") ) {
              * Init Shortcake Plugin: https://github.com/fusioneng/Shortcake
              * Plugin source has been added in /shortcake
              */
-            // Include file
-            $initshortcake = plugin_dir_path( __FILE__ ) . '/shortcake-plugin/shortcode-ui.php';
-            
-            if ( is_readable($initshortcake) ) {
+			
+            $initshortcake = plugin_dir_path( __FILE__ ) . '/inc/shortcake/shortcode-ui.php';
+			
+            // Include Shortcake if not loaded (by other Plugin) already
+            if ( !class_exists( 'Shortcode_UI' ) && is_readable($initshortcake) ) {
                 require_once($initshortcake);
             }
             
@@ -274,6 +275,12 @@ if ( !class_exists("themesPlus") ) {
                         'label' => 'contactform',
                         'listItemImage' => 'dashicons-email-alt',
                         'attrs' => array(
+							array(
+                                'label'       => 'Email',
+                                'attr'        => 'email',
+                                'type'        => 'text',
+                                'placeholder' => 'mail@domain.tld',
+                            ),
                             array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',

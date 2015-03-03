@@ -131,6 +131,17 @@ function themes_plus_customizer( $wp_customize ) {
     
     /*
      * Favicon: Core feature soon? (see: https://core.trac.wordpress.org/ticket/16434)
+	
+	
+	http://wordpress.stackexchange.com/questions/108131/conditional-image-sizes-for-use-via-theme-customizer-upload-only
+	
+	
+	*
+	 * Todo:
+	 * 0. Upload image (PNG/GIF/JPG) size > "64x64"
+     * 1. Convert image to png
+     * 2. Resize to "64x64"
+     * 3. Rename to "favicon.png"
      */
     /*$wp_customize->add_setting('themes_plus_favicon', array(
         'default'           => '',
@@ -138,9 +149,10 @@ function themes_plus_customizer( $wp_customize ) {
     ));
     $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'themes_plus_favicon', array(
         'label'    => 'Upload Favicon',
+		'description' => '64x64px',
         'section'  => 'themes_plus_section',
         'priority' => 9,
-        'settings' => themes_plus_'favicon',
+        'settings' => themes_plus_favicon',
     )));*/
     
     /*
@@ -148,7 +160,8 @@ function themes_plus_customizer( $wp_customize ) {
      * http://codex.wordpress.org/Class_Reference/WP_Image_Editor
 	 *
 	 * Todo:
-     * 1. Convert image source to png
+	 * 0. Upload image (PNG/GIF/JPG) size > "512x512"
+     * 1. Convert image to png
      * 2. Resize to "152x152", "120x120", "76x76", "57x57"
      * 3. Rename to "apple-touch-icon-###.png"
      */
@@ -157,7 +170,8 @@ function themes_plus_customizer( $wp_customize ) {
         'sanitize_callback' => 'esc_url_raw',
     ));
     $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'themes_plus_touchicon', array(
-        'label'    => 'Upload Touch Icon (&gt;152x152px),
+        'label'    => 'Upload Touch Icon,
+		'description' => '&gt;152x152px',
         'section'  => 'themes_plus_section',
         'priority' => 10,
         'settings' => 'themes_plus_touchicon',

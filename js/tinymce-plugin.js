@@ -5,7 +5,7 @@
     
     tinymce.PluginManager.add('themes_tinymce_button', function (editor, url) {
         editor.addButton('themes_tinymce_button', {
-            title: 'them.es+ Shortcodes',
+            title: 'them.es+',
             image: url + '/tinymce-button.png',
             type: 'menubutton',
             menu: [
