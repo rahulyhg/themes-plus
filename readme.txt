@@ -15,6 +15,10 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 
 * WordPress Themes built with the [Bootstrap](http://getbootstrap.com/ "Bootstrap") framework
 * Installing this Plugin is strongly recommended for [them.es](http://them.es/ "them.es") customers who want to implement the featured Modules
+
+= Looking for a compatible Theme? =
+
+* Generate your customized Bootstrap Starter Theme under [them.es](http://them.es/starter "them.es")
     
 = What you get? =
 

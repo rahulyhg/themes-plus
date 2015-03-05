@@ -23,7 +23,11 @@ For more information, check out [http://them.es/plus](http://them.es/plus)
 
 
 ## What's NOT included?
-* Bootstrap framework (needs to be included in your Theme)
+* Bootstrap framework (needs to be included in your Theme files)
+
+
+## Free Bootstrap Starter Theme
+We are running a Sister project which maintains a free **WordPress Starter Theme** built with Bootstrap. For more information, have a look at [http://them.es/starter](http://them.es/starter) or [https://github.com/them-es/themes-starter](https://github.com/them-es/themes-starter)
 
 
 ## Documentation
@@ -160,7 +164,10 @@ Common example using the grid:
 </tr>
 <tr>
     <td><strong>Contact form</strong></td>
-    <td><pre><code>[contactform]</code></pre></td>
+    <td>
+		<pre><code>[contactform]</code></pre>
+		<pre><code>[contactform email="email@domain.tld"]</code></pre>
+	</td>
 </tr>
 <tr>
     <td></td>
