@@ -300,6 +300,23 @@
                                     name: 'number',
                                     label: 'Percentage'
                                 },
+								{
+                                    type: 'textbox',
+                                    name: 'title',
+                                    label: 'Title'
+                                },
+                                {
+                                    type: 'listbox',
+                                    name: 'type',
+                                    label: 'Select type:',
+                                    onselect: function(e) {
+
+                                    },
+                                    'values': [
+                                      { text: 'Bar', value: 'bar' },
+                                      { text: 'Chart', value: 'chart' }
+                                    ]
+                                },
                                 {
                                     type: 'listbox',
                                     name: 'color',
@@ -308,11 +325,11 @@
 
                                     },
                                     'values': [
-                                      { text: 'blue', value: 'blue' },
-                                      { text: 'green', value: 'green' },
-                                      { text: 'lightblue', value: 'lightblue' },
-                                      { text: 'yellow', value: 'yellow' },
-                                      { text: 'red', value: 'red' }
+                                      { text: 'Blue', value: 'blue' },
+                                      { text: 'Green', value: 'green' },
+                                      { text: 'Lightblue', value: 'lightblue' },
+                                      { text: 'Yellow', value: 'yellow' },
+                                      { text: 'Red', value: 'red' }
                                     ]
                                 },
                                 {
@@ -322,9 +339,15 @@
                                 }
                             ],
                             onsubmit: function (e) {
-                                var number = "", color = "", label = "";
-                                if (e.data.number !== '' || !isNaN(e.data.number)) {
+                                var number = "", title = "", type = "", color = "", label = "";
+								if (e.data.number !== '' || !isNaN(e.data.number)) {
                                     number = e.data.number;
+                                }
+                                if (e.data.title !== '') {
+                                    title = e.data.title;
+                                }
+								if (e.data.type !== '') {
+                                    type = ' type="' + e.data.type + '"';
                                 }
                                 if (e.data.color !== '') {
                                     color = ' color="' + e.data.color + '"';
@@ -332,7 +355,7 @@
                                 if (e.data.label === true) {
                                     label = ' label="true"';
                                 }
-                                editor.insertContent('[progressbar' + color + label + ']' + number + '[/progressbar]');
+                                editor.insertContent('[progressbar' + title + type + color + label + ']' + number + '[/progressbar]');
                             }
                         });
                     }

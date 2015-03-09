@@ -16,6 +16,7 @@ For more information, check out [http://them.es/plus](http://them.es/plus)
 * Portfolio Filter
 * Count up
 * Countdown Timer
+* Progress bar
 * Recent Posts
 * Google Maps
 * Google Analytics
@@ -60,6 +61,17 @@ All Add-ons are documented under [http://them.es/plus](http://them.es/plus)
     <td><strong>Countdown Timer to a specific Date</strong></td>
     <td>
         <pre><code>[timer]January 01, 2020 12:00:00[/timer]</code></pre>
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><strong>Animated Progress bar/chart</strong></td>
+    <td>
+        <pre><code>[progressbar]60[/progressbar]</code></pre>
+		<pre><code>[progressbar type="chart" color="red" label="true"]40[/progressbar]</code></pre>
     </td>
 </tr>
 <tr>
@@ -217,6 +229,7 @@ Common example using the grid:
 * [Bootstrap](https://github.com/twbs/bootstrap), [MIT licence](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 * [jquery-countTo](https://github.com/mhuggins/jquery-countTo), [MIT licence](https://github.com/mhuggins/jquery-countTo/blob/master/LICENSE.txt)
 * [jCountdown](https://github.com/tomgrohl/jCountdown), [MIT licence](https://github.com/tomgrohl/jCountdown/blob/master/license.txt)
+* [easy-pie-chart](https://github.com/rendro/easy-pie-chart), [MIT licence](https://github.com/rendro/easy-pie-chart/blob/master/LICENSE)
 * [Shuffle.js](https://github.com/Vestride/Shuffle), [MIT licence](https://github.com/Vestride/Shuffle/blob/master/LICENSE)
 * [Salvattore](https://github.com/rnmp/salvattore), [MIT licence](https://github.com/rnmp/salvattore/blob/master/LICENSE)
 * [Google Maps API](https://developers.google.com/maps), [Proprietary licence](https://developers.google.com/maps/licensing)

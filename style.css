@@ -320,6 +320,37 @@
   display: block;
   border-right: 5px solid #ffffff;
 }
+/* Progressbar: EasyPieChart */
+.chart {
+  margin: 10px;
+  float: left;
+}
+.chart h3 {
+  text-align: center;
+}
+.easyPieChart {
+  position: relative;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+}
+.easyPieChart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.percent {
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 100;
+  line-height: 220px;
+  z-index: 2;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}
 /* Bootstrap Carousel */
 .carousel {
   height: 80vh;

@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -488,17 +488,16 @@ if ( !class_exists("themesPlus") ) {
          * Progress bar
          * 
          * Shortcode:
-         * [progressbar color="blue" duration="2" label="true" class="progress-bar-success"]40[/progressbar]
+         * [progressbar color="blue" duration="2" label="true"]40[/progressbar]
 		 * Colors: blue/green/lightblue/yellow/red
          */
             
             function themes_progressbar_shortcode( $atts = array(), $content = null ) {
                 
-                wp_register_script( 'progressbarinit', plugins_url( '/js/progressbarinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
-                wp_enqueue_script( 'progressbarinit' );
-                
                 // Get Attributes
                 extract(shortcode_atts(array(
+					'type' => '',
+					'title' => '',
                     'color' => '',
                     'duration' => '',
                     'label' => '',
@@ -507,40 +506,76 @@ if ( !class_exists("themesPlus") ) {
                 ), $atts));
                 
                 $value = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
-                
-                //$style .= "width: " . $value . "%;"; // no CSS3 animation!
-                
-                if ( isset($color) && $color != "" ) {
-                    
-                    if ( $color == "blue" ) {
-                        $class .= " progress-bar-primary";
-                    } else if ( $color == "green" ) {
-                        $class .= " progress-bar-success";
-                    } else if ( $color == "lightblue" ) {
-                        $class .= " progress-bar-info";
-                    } else if ( $color == "yellow" ) {
-                        $class .= " progress-bar-warning";
-                    } else if ( $color == "red" ) {
-                        $class .= " progress-bar-danger";
-                    }
-                    
-                }
-                
-                if ( isset($duration) && $duration != "" ) {
-                    $style .= "-webkit-transition-duration: " . $duration . "s; transition-duration: " . $duration . "s;";
-                } else {
-                    $style .= "-webkit-transition-duration: 2s; transition-duration: 2s;"; // Default
-                }
-                
-                if ( isset($label) && $label != "" ) {
-                    $label = $value . "%";
-                }
-                
-                $progressbar = '<div class="progress">';
-                $progressbar .= '<div class="progress-bar' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="0" aria-valuemax="100">';
-                $progressbar .= ( isset($label) && $label != "" || isset($label) && $label == "1" ? $value . '%' : '<span class="sr-only">' . $value . '%</span>' );
-                $progressbar .= '</div>';
-                $progressbar .= '</div>';
+				
+				if ( isset($type) && $type == "chart" ) {
+					// Circular Progress indicator
+					
+					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechart.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_enqueue_script( 'progresschartinit' );
+					
+					if ( isset($color) && $color != "" ) {
+
+						if ( $color == "blue" ) {
+							$colorcode = "337AB7";
+						} else if ( $color == "green" ) {
+							$colorcode = "5CB85C";
+						} else if ( $color == "lightblue" ) {
+							$colorcode = "5BC0DE";
+						} else if ( $color == "yellow" ) {
+							$colorcode = "F0AD4E";
+						} else if ( $color == "red" ) {
+							$colorcode = "D9534F";
+						}
+
+					}
+					
+					$progressbar = '<div class="chart">';
+					$progressbar .= '<div class="easyPieChart" data-percent="0" data-value="' . $value . '" data-duration="' . ( isset($duration) && $duration != "" ? $duration*1000 : '2000' ) . '"' . ( isset($colorcode) && $colorcode != "" ? ' data-bar-color="#' . $colorcode . '"' : '' ) . '>' . ( isset($label) && $label != "" || isset($label) && $label == "1" ? '<span class="percent">' . $value . '</span>' : '' ) . '</div>';
+					if ( isset($title) && $title != "" ) { $progressbar .= '<h3>' . $title . '</h3>'; }
+					$progressbar .= '</div>';
+					
+				} else {
+					// Bootstrap Progress bar
+					
+					wp_register_script( 'progressbarinit', plugins_url( '/js/progressbarinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_enqueue_script( 'progressbarinit' );
+					
+					if ( isset($color) && $color != "" ) {
+
+						if ( $color == "blue" ) {
+							$class .= " progress-bar-primary";
+						} else if ( $color == "green" ) {
+							$class .= " progress-bar-success";
+						} else if ( $color == "lightblue" ) {
+							$class .= " progress-bar-info";
+						} else if ( $color == "yellow" ) {
+							$class .= " progress-bar-warning";
+						} else if ( $color == "red" ) {
+							$class .= " progress-bar-danger";
+						}
+
+					}
+					
+					//$style .= "width: " . $value . "%;"; // no CSS3 animation!
+
+					if ( isset($duration) && $duration != "" ) {
+						$style .= "-webkit-transition-duration: " . $duration . "s; transition-duration: " . $duration . "s;";
+					} else {
+						$style .= "-webkit-transition-duration: 2s; transition-duration: 2s;"; // Default
+					}
+
+					if ( isset($label) && $label != "" ) {
+						$label = $value . "%";
+					}
+
+					$progressbar = '<div class="progress">';
+					if ( isset($title) && $title != "" ) { $progressbar .= '<h3>' . $title . '</h3>'; }
+					$progressbar .= '<div class="progress-bar' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="0" aria-valuemax="100">';
+					$progressbar .= ( isset($label) && $label != "" || isset($label) && $label == "1" ? $value . '%' : '<span class="sr-only">' . $value . '%</span>' );
+					$progressbar .= '</div>';
+					$progressbar .= '</div>';
+					
+				}
                 
                 return $progressbar;
                 
@@ -564,16 +599,26 @@ if ( !class_exists("themesPlus") ) {
                                 'type'        => 'number',
                                 'placeholder' => '40',
                             ),
+							array(
+                                'label'       => 'Type',
+                                'attr'        => 'type',
+                                'type'        => 'radio',
+								'value'       => 'bar', // default value 
+                                'options'     => array(
+                                                    'bar' => 'Bar',
+                                                    'chart' => 'Chart'
+                                                )
+                            ),
                             array(
                                 'label'       => 'Color',
                                 'attr'        => 'color',
                                 'type'        => 'select',
                                 'options'     => array(
-                                                    'blue' => 'blue',
-                                                    'green' => 'green',
-                                                    'lightblue' => 'lightblue',
-                                                    'yellow' => 'yellow',
-                                                    'red' => 'red'
+                                                    'blue' => 'Blue',
+                                                    'green' => 'Green',
+                                                    'lightblue' => 'Lightblue',
+                                                    'yellow' => 'Yellow',
+                                                    'red' => 'Red'
                                                 )
                             ),
                             array(
