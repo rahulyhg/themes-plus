@@ -71,6 +71,7 @@ All Add-ons are documented under [http://them.es/plus](http://them.es/plus)
     <td><strong>Animated Progress bar/chart</strong></td>
     <td>
         <pre><code>[progressbar]60[/progressbar]</code></pre>
+		<pre><code>[progressbar type="bar" color="green" label="true"]50[/progressbar]</code></pre>
 		<pre><code>[progressbar type="chart" color="red" label="true"]40[/progressbar]</code></pre>
     </td>
 </tr>
