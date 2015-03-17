@@ -262,7 +262,7 @@
                                 if ((e.data.minute !== '') || !isNaN(e.data.minute)) {
                                     minute = e.data.minute;
                                 }
-                                editor.insertContent('[countdown]' + month + ' ' + day + ', ' + year + ' ' + hour + ':' + minute + ':00' + '[/countdown]');
+                                editor.insertContent('[timer]' + month + ' ' + day + ', ' + year + ' ' + hour + ':' + minute + ':00' + '[/timer]');
                             }
                         });
                     }

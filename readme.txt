@@ -2,12 +2,12 @@
 Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, contact form, grid
 Requires at least: 4.0
-Tested up to: 4.1
-Stable tag: 1.1.6
+Tested up to: 4.2
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Useful WordPress Add-ons for Themes built with Bootstrap
+Useful WordPress Add-ons for Themes built with Bootstrap.
 
 == Description ==
 
@@ -91,6 +91,10 @@ Useful WordPress Add-ons for Themes built with Bootstrap
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.7 =
+* Changes: Smooth height transitions in Content Slider
+* Shortcake: Added latest release
 
 = 1.1.6 =
 * Changes: New type "Chart" in Progress bar. Added a title attribute.
