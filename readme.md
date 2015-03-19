@@ -28,7 +28,9 @@ For more information, check out [http://them.es/plus](http://them.es/plus)
 
 
 ## Free Bootstrap Starter Theme
-We are running a Sister project which maintains a free **WordPress Starter Theme** built with Bootstrap. For more information, have a look at [http://them.es/starter](http://them.es/starter) or [https://github.com/them-es/themes-starter](https://github.com/them-es/themes-starter)
+We are running a Sister project which maintains a free **WordPress Starter Theme** built with Bootstrap. For more information, have a look at
+* [http://them.es/starter](http://them.es/starter) or
+* [https://github.com/them-es/themes-starter](https://github.com/them-es/themes-starter)
 
 
 ## Documentation

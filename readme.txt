@@ -80,6 +80,9 @@ Useful WordPress Add-ons for Themes built with Bootstrap.
   
 == Upgrade Notice ==
 
+= 1.1.7 =
+* Bugfix: Fixed Animations flickering in Progress charts
+
 = 1.1.2 =
 * Important change: For consistency reasons the inner Content Carousel shortcode [item] got replaced with [carouselslide]
 
