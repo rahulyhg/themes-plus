@@ -28,6 +28,7 @@ class Shortcode_UI {
 
 	private function setup_actions() {
 		add_action( 'after_setup_theme',    array( $this, 'add_editor_style' ) ); // changed
+		
 		add_action( 'wp_enqueue_editor',    array( $this, 'action_wp_enqueue_editor' ) );
 		add_action( 'wp_ajax_do_shortcode', array( $this, 'handle_ajax_do_shortcode' ) );
 	}
