@@ -530,7 +530,7 @@ if ( !class_exists("themesPlus") ) {
 					}
 					
 					$progressbar = '<div class="chart">';
-					$progressbar .= '<div class="easyPieChart" data-percent="0" data-value="' . $value . '" data-duration="' . ( isset($duration) && $duration != "" ? $duration*1000 : '2000' ) . '"' . ( isset($colorcode) && $colorcode != "" ? ' data-bar-color="#' . $colorcode . '"' : '' ) . '>' . ( isset($label) && $label != "" || isset($label) && $label == "1" ? '<span class="percent">' . $value . '</span>' : '' ) . '</div>';
+					$progressbar .= '<div class="easyPieChart" data-animate="on" data-percent="0" data-value="' . $value . '" data-duration="' . ( isset($duration) && $duration != "" ? $duration*1000 : '2000' ) . '"' . ( isset($colorcode) && $colorcode != "" ? ' data-bar-color="#' . $colorcode . '"' : '' ) . '>' . ( isset($label) && $label != "" || isset($label) && $label == "1" ? '<span class="percent">' . $value . '</span>' : '' ) . '</div>';
 					if ( isset($title) && $title != "" ) { $progressbar .= '<h3>' . $title . '</h3>'; }
 					$progressbar .= '</div>';
 					
