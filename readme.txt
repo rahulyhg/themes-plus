@@ -3,11 +3,11 @@ Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Useful WordPress Add-ons for Themes built with Bootstrap.
+Useful Add-ons for WordPress Themes built with Bootstrap.
 
 == Description ==
 
@@ -64,13 +64,13 @@ Useful WordPress Add-ons for Themes built with Bootstrap.
 * Gallery hooks can be activated by __Creating a new WordPress Gallery__, adding images and selecting the __Type__ in the Gallery settings
 
 = How can I setup a Portfolio Filter? =
-* Upload all images which should appear in the Portfolio
-* __Name__ and __Tag__ them accordingly. Images are grouped in the filter by using the same tag
+* Upload all images which should appear in the Portfolio to the Media library
+* __Name__ and __Tag__ them accordingly. Images are grouped in the filter by using the same tag!
 * Create a new WordPress Gallery and select Type __Portfolio Filter__
 
 = Does this Plugin work with my Theme? =
 * The Plugin has been primarily developed to bring additional features into [them.es](http://them.es/ "them.es") Themes
-* But it should work out-of-the-box if your WordPress Theme has been built with Bootstrap and if all Bootstrap components are included in your Theme
+* It should work out-of-the-box if your WordPress Theme has been built with Bootstrap and if all Bootstrap components are included in your Theme
 
 = Where can I get help? =
 * You can ask questions in the Support forums
@@ -94,6 +94,10 @@ Useful WordPress Add-ons for Themes built with Bootstrap.
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.8 =
+* Recent Posts Shortcode: Add posts array via "ids" attribute (similar to Galleries)
+* Shortcake: Added latest release to improve WordPress 4.2 compatibility
 
 = 1.1.7 =
 * Changes: Smooth height transitions in Content Slider

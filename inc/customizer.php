@@ -21,7 +21,7 @@ function themes_plus_customizer( $wp_customize ) {
  */
 	
 	$wp_customize->add_section( 'themes_plus_section', array(
-		'title'          => 'them.es Plus &oplus;',
+		'title'          => '&oplus; them.es Plus',
 		'priority'       => 10000,
 	) );
     
