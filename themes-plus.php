@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.7
+ * Version: 1.1.8
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -203,31 +203,35 @@ if ( !class_exists("themesPlus") ) {
                                 'label'       => 'Lat,Lng',
                                 'attr'        => 'latlng',
                                 'type'        => 'text',
-                                'placeholder' => '0.0000,0.0000',
+								'meta' => array(
+									'placeholder' => '0.0000,0.0000',
+								),
                             ),
                             array(
                                 'label'       => 'Zoom',
                                 'attr'        => 'zoom',
                                 'type'        => 'number',
-                                'placeholder' => '14',
+                                'meta' => array(
+									'placeholder' => '14',
+								),
                             ),
                             array(
                                 'label'       => 'Marker (PNG/GIF/JPG, 128x128)',
                                 'attr'        => 'marker',
                                 'type'        => 'text',
-                                'placeholder' => 'http://',
+                                'meta' => array(
+									'placeholder' => 'http://',
+								),
                             ),
                             array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
                     )
@@ -279,19 +283,19 @@ if ( !class_exists("themesPlus") ) {
                                 'label'       => 'Email',
                                 'attr'        => 'email',
                                 'type'        => 'text',
-                                'placeholder' => 'mail@domain.tld',
+								'meta' => array(
+									'placeholder' => 'mail@domain.tld',
+								),
                             ),
                             array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
                     )
@@ -303,13 +307,14 @@ if ( !class_exists("themesPlus") ) {
          * Recent posts
          * 
          * Shortcode:
-         * [recentposts] or [recentposts posts="10"]
+         * [recentposts] or [recentposts posts="10" ids="1,2,3,4"]
          */
             function themes_recentposts_shortcode( $atts = array() ) {
                 
                 // Get Attributes
                 extract(shortcode_atts(array(
-                    'posts' => '5'
+                    'posts' => '5',
+					'ids' => ''
                 ), $atts));
                 
                 // Return Content
@@ -351,9 +356,21 @@ if ( !class_exists("themesPlus") ) {
                         'attrs' => array(
                             array(
                                 'label'       => 'Number of Posts',
-                                'attr'        => 'number',
+                                'attr'        => 'posts',
                                 'type'        => 'number',
-                                'placeholder' => '5',
+                                'meta' => array(
+									'placeholder' => '5',
+								),
+							),
+							array(
+								'label'       => 'Select Posts',
+                                'attr'        => 'ids',
+                                'type'        => 'post_select',
+								'query'       => array(
+													'post_type' => 'post',
+													//'order' => 'ASC'
+												),
+								'multiple'    => true,
                             ),
                         ),
                     )
@@ -403,21 +420,22 @@ if ( !class_exists("themesPlus") ) {
                                 'description' => 'Timezone: UTC ' . get_option('gmt_offset') . ' ' . get_option('timezone_string'),
                                 'attr'        => 'content',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
 							array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
+						'inner_content' => array(
+							'label'       => 'Timestamp: January 25, 2020 12:00:00',
+							'description' => 'Timezone: UTC ' . get_option('gmt_offset') . ' ' . get_option('timezone_string'),
+						),
                     )
                 );
             }
@@ -461,24 +479,22 @@ if ( !class_exists("themesPlus") ) {
                         //'listItemImage' => 'dashicons-editor-quote',
                         'attrs' => array(
                             array(
-                                'label'       => 'Count to',
-                                'attr'        => 'content',
-                                'type'        => 'number',
-                                'placeholder' => '100',
-                            ),
-							array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
+						'inner_content' => array(
+							'label'       => 'Count to',
+							'meta' => array(
+								'placeholder' => '100',
+							),
+						),
                     )
                 );
             }
@@ -594,12 +610,6 @@ if ( !class_exists("themesPlus") ) {
                         //'listItemImage' => 'dashicons-editor-quote',
                         'attrs' => array(
                             array(
-                                'label'       => 'Percentage',
-                                'attr'        => 'content',
-                                'type'        => 'number',
-                                'placeholder' => '40',
-                            ),
-							array(
                                 'label'       => 'Type',
                                 'attr'        => 'type',
                                 'type'        => 'radio',
@@ -625,7 +635,9 @@ if ( !class_exists("themesPlus") ) {
                                 'label'       => 'Duration (seconds)',
                                 'attr'        => 'duration',
                                 'type'        => 'number',
-                                'placeholder' => '0.6',
+                                'meta' => array(
+									'placeholder' => '0.6',
+								),
                             ),
                             array(
                                 'label'       => 'Show Label',
@@ -636,15 +648,19 @@ if ( !class_exists("themesPlus") ) {
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
+						'inner_content' => array(
+							'label'       => 'Percentage',
+							'meta' => array(
+								'placeholder' => '40',
+							),
+						),	
                     )
                 );
             }
@@ -713,24 +729,23 @@ if ( !class_exists("themesPlus") ) {
                         //'listItemImage' => 'dashicons-editor-quote',
                         'attrs' => array(
                             array(
-                                'label'       => 'Content',
-                                'attr'        => 'content',
-                                'type'        => 'textarea',
-                                'placeholder' => 'Lorem ipsum dolor sit amet...',
-                            ),
-                            array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
+						'inner_content' => array(
+							'label'       => 'Content',
+							'meta' => array(
+								'placeholder' => 'Lorem ipsum dolor sit amet...',
+							),
+						),
+                            
                     )
                 );
             }
@@ -805,24 +820,22 @@ if ( !class_exists("themesPlus") ) {
                         //'listItemImage' => 'dashicons-editor-quote',
                         'attrs' => array(
                             array(
-                                'label'       => 'Content',
-                                'attr'        => 'content',
-                                'type'        => 'textarea',
-                                'placeholder' => 'Lorem ipsum dolor sit amet...',
-                            ),
-                            array(
                                 'label'       => 'Class',
                                 'attr'        => 'class',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                             array(
                                 'label'       => 'CSS',
                                 'attr'        => 'style',
                                 'type'        => 'text',
-                                'placeholder' => '',
                             ),
                         ),
+						'inner_content' => array(
+							'label'       => 'Content',
+                            'meta' => array(
+								'placeholder' => 'Lorem ipsum dolor sit amet...',
+							),
+						),  
                     )
                 );
             }
