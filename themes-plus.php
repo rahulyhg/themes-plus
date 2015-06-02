@@ -96,7 +96,7 @@ if ( !class_exists("themesPlus") ) {
 			if( isset($ga_trackingcode) && $ga_trackingcode != "" ) {
 				add_action('wp_footer', 'themes_plus_add_googleanalytics', 100);
 			}
-
+			
             
             /**
              * Transform Standard Image Galleries

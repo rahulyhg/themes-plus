@@ -97,11 +97,6 @@
   width: auto;
   display: inline;
 }
-/* WordPress Embeds */
-.wp-video,
-.embed-responsive {
-  margin: 10px 0;
-}
 /* WordPress Standard Gallery */
 .gallery {
   margin-bottom: 10px;
