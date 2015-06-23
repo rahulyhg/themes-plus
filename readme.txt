@@ -3,7 +3,7 @@ Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, contact form, grid
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,7 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 = Feedback/Help/Contribution? =
 
 * The Development of this Plugin can be followed via GitHub <3
-* We are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es](https://github.com/them-es "GitHub")
+* We are happy to receive feedback, questions, feature suggestions and pull requests: [https://github.com/them-es/themes-plus](https://github.com/them-es/themes-plus "GitHub")
 
 == Screenshots ==
 
@@ -80,6 +80,9 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
   
 == Upgrade Notice ==
 
+= 1.1.9 =
+* Bugfixes: Google Maps and Animated Progress chart were not initialized
+
 = 1.1.7 =
 * Bugfix: Fixed Animations flickering in Progress charts
 
@@ -94,6 +97,9 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 * Updated documentation
 
 == Changelog ==
+
+= 1.1.9 =
+* Shortcake: Added latest release
 
 = 1.1.8 =
 * Recent Posts Shortcode: Add posts array via "ids" attribute (similar to Galleries)
