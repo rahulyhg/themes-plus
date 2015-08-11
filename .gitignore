@@ -2,6 +2,8 @@
 ##########
 tmp/
 deploy.sh
+bower.json
+bower_components/
 
 # Compiled source #
 ###################

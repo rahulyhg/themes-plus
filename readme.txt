@@ -1,9 +1,9 @@
 === them.es Plus ===
 Contributors: them.es
-Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, contact form, grid
+Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, grid
 Requires at least: 4.0
-Tested up to: 4.2
-Stable tag: 1.1.9
+Tested up to: 4.3
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 
 * `[Shortcodes]` and Customization
 * Demos and Docs can be found under [http://them.es/plus](http://them.es/plus/ "them.es+")
-* Contact form, Recent Posts, Progress bars/charts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
+* Recent Posts, Progress bars/charts, Count down to date, Funny Count up Stats, Carousel, Grid, etc.
 * Google Maps, Google Analytics
 * WordPress Standard Image Gallery hooks, Slider, Portfolio Filter
 * TinyMCE Button
@@ -80,6 +80,9 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
   
 == Upgrade Notice ==
 
+= 1.2.0 =
+* Important change: The simple Contact Form has been removed. We recommend to install the powerful and flexible Contact Form 7 Plugin instead.
+
 = 1.1.9 =
 * Bugfixes: Google Maps and Animated Progress chart were not initialized
 
@@ -97,6 +100,10 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 * Updated documentation
 
 == Changelog ==
+
+= 1.2.0 =
+* Shortcake: Added latest release
+* Contact form: Removed in this release
 
 = 1.1.9 =
 * Shortcake: Added latest release

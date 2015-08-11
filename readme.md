@@ -20,7 +20,6 @@ For more information, check out [http://them.es/plus](http://them.es/plus)
 * Recent Posts
 * Google Maps
 * Google Analytics
-* Simple Contact form
 
 
 ## What's NOT included?
@@ -176,13 +175,6 @@ Common example using the grid:
 <tr>
     <td></td>
     <td></td>
-</tr>
-<tr>
-    <td><strong>Contact form</strong></td>
-    <td>
-		<pre><code>[contactform]</code></pre>
-		<pre><code>[contactform email="email@domain.tld"]</code></pre>
-	</td>
 </tr>
 <tr>
     <td></td>

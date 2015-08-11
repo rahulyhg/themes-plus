@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.1.9
+ * Version: 1.2.0
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -240,70 +240,6 @@ if ( !class_exists("themesPlus") ) {
 
 
         /**
-         * Contact form
-         * 
-         * Shortcode:
-         * [contactform]
-         */
-            function themes_contactform_shortcode( $atts = array() ) {
-                
-                // Include file
-                $file = plugin_dir_path( __FILE__ ) . "/inc/contactform.php";
-                
-                // Return Content from file
-                if ( $file != 'NULL' && file_exists($file) ) {
-                    
-                    ob_start();
-                    include( $file );
-                    $content = ob_get_clean();
-                    
-                    return $content;
-                    
-                } else {
-                    
-                    return __( 'Error', 'themes-plus' );
-                    
-                }
-                
-            }
-            add_shortcode( 'contactform', 'themes_contactform_shortcode' );
-            
-         /**
-         * Register a TinyMCE UI for the Shortcode
-         * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
-         */
-            if (function_exists('shortcode_ui_register_for_shortcode')) {
-                shortcode_ui_register_for_shortcode(
-                    'contactform',
-                    array(
-                        'label' => 'contactform',
-                        'listItemImage' => 'dashicons-email-alt',
-                        'attrs' => array(
-							array(
-                                'label'       => 'Email',
-                                'attr'        => 'email',
-                                'type'        => 'text',
-								'meta' => array(
-									'placeholder' => 'mail@domain.tld',
-								),
-                            ),
-                            array(
-                                'label'       => 'Class',
-                                'attr'        => 'class',
-                                'type'        => 'text',
-                            ),
-                            array(
-                                'label'       => 'CSS',
-                                'attr'        => 'style',
-                                'type'        => 'text',
-                            ),
-                        ),
-                    )
-                );
-            }
-
-
-        /**
          * Recent posts
          * 
          * Shortcode:
@@ -388,7 +324,10 @@ if ( !class_exists("themesPlus") ) {
             // Datetime: [timer]January 25, 2020 12:00:00[/timer]
             function themes_timer_shortcode( $atts = array(), $content = null ) {
                 
-                wp_register_script( 'timerinit', plugins_url( '/js/countdown.min.js', __FILE__ ), array('jquery'), '1.0', false );
+                wp_register_script( 'timer', plugins_url( '/js/libs/jquery-countDown/jquery.jcountdown.min.js', __FILE__ ), array('jquery'), '1.0', false );
+                wp_enqueue_script( 'timer' );
+				
+				wp_register_script( 'timerinit', plugins_url( '/js/countdowninit.min.js', __FILE__ ), array('jquery'), '1.0', false );
                 wp_enqueue_script( 'timerinit' );
                 
 				// Get Attributes
@@ -397,7 +336,7 @@ if ( !class_exists("themesPlus") ) {
                     'style' => ''
                 ), $atts));
 				
-                $datetime = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
+                $datetime = strtolower( do_shortcode( shortcode_unautop( $content ) ) ); // If $content contains a shortcode, that code will get processed
                 
                 return '<h3 id="timer" class="h1 timer' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' data-to="' . $datetime .'" data-offset="' . get_option('gmt_offset') . '" data-rtl="' . ( is_rtl() ? 'true' : 'false' ) . '">' . $datetime . ', UTC ' . get_option('gmt_offset') . '</h3>';
                 
@@ -451,7 +390,10 @@ if ( !class_exists("themesPlus") ) {
             // Number: [countup]###[/countup]
             function themes_countup_shortcode( $atts = array(), $content = null ) {
                 
-                wp_register_script( 'counttoinit', plugins_url( '/js/countto.min.js', __FILE__ ), array('jquery'), '1.0', false );
+                wp_register_script( 'countto', plugins_url( '/js/libs/jquery-countTo/jquery.countTo.js', __FILE__ ), array('jquery'), '1.0', false );
+                wp_enqueue_script( 'countto' );
+				
+				wp_register_script( 'counttoinit', plugins_url( '/js/counttoinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
                 wp_enqueue_script( 'counttoinit' );
 				
 				// Get Attributes
@@ -526,7 +468,10 @@ if ( !class_exists("themesPlus") ) {
 				if ( isset($type) && $type == "chart" ) {
 					// Circular Progress indicator
 					
-					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechart.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_register_script( 'progresschart', plugins_url( '/js/libs/easy-pie-chart/jquery.easypiechart.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_enqueue_script( 'progresschart' );
+					
+					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechartinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
 					wp_enqueue_script( 'progresschartinit' );
 					
 					if ( isset($color) && $color != "" ) {

@@ -95,10 +95,11 @@
         
         // 1. Grid: [gallery ids="###,###,###" type="grid"]
         if ( !empty($include) && $type == "grid" ) :
-        
-            // Load Masonry Plugin
-            wp_register_script( 'salvattoreplugin', plugins_url( '/js/salvattore.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
+		
+			// Load Masonry Plugin in Footer
+            wp_register_script( 'salvattoreplugin', plugins_url( '/js/libs/salvattore-masonry/salvattore.min.js', dirname(__FILE__) ), array('jquery'), '1.0', true );
             wp_enqueue_script( 'salvattoreplugin' );
+			
 
 			$output = '<div id="grid" class="gallery grid" data-columns>' . PHP_EOL;
         
@@ -302,7 +303,7 @@
         if ( !empty($include) && $type == "portfolio" ) :
         
             // Init Javascripts
-            wp_register_script( 'shuffleinit', plugins_url( '/js/shuffle.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
+            wp_register_script( 'shuffleinit', plugins_url( '/js/libs/shufflejs/jquery.shuffle.modernizr.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
             wp_enqueue_script( 'shuffleinit' );
         
 ?>
