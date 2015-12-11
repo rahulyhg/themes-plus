@@ -451,13 +451,6 @@
                     }
                 },
                 {
-                    text: 'Contact form',
-                    value: '[contactform]',
-                    onclick: function () {
-                        editor.insertContent(this.value());
-                    }
-                },
-                {
                     text: 'Media (Image Gallery, Carousel, Portfolio)',
                     value: '',
                     onclick: function () {

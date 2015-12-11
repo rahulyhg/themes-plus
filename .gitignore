@@ -3,6 +3,8 @@
 tmp/
 deploy.sh
 bower.json
+Gruntfile.js
+gulpfile.js
 bower_components/
 
 # Compiled source #
