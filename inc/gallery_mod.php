@@ -303,47 +303,11 @@
         if ( !empty($include) && $type == "portfolio" ) :
         
             // Init Javascripts
-            wp_register_script( 'shuffleinit', plugins_url( '/js/libs/shufflejs/jquery.shuffle.modernizr.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
-            wp_enqueue_script( 'shuffleinit' );
-        
-?>
-            <script>
-                jQuery(document).ready(function() {
-                    var portfolio = jQuery('#portfolio-list'), filterOptions = jQuery('.filter-options');
-
-                    portfolio.shuffle({
-                        itemSelector: '[class*="col-"]',
-                        sizer: null,
-                        speed: 250, // Transition/animation speed (milliseconds).
-                        easing: 'ease-out', // CSS easing function to use.
-                        buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
-                        initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method.
-                        throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
-                        sequentialFadeDelay: 150, // Delay between each item that fades in when adding items.
-                    });
-
-                    var btns = filterOptions.find('.btn');
-                    btns.on('click', function() {
-                        var btn = jQuery(this), isActive = btn.hasClass( 'active' ),
-                        group = isActive ? 'all' : btn.data('group');
-
-                        // Already active?
-                        if ( isActive ) {
-                            return false;
-                        }
-
-                        filterOptions.find('.btn').removeClass("active");
-                        btn.addClass("active");
-
-                        // Filter elements
-                        portfolio.shuffle( 'shuffle', group );
-                    });
-
-                    btns = null;
-
-                });
-            </script>
-<?php
+            wp_register_script( 'portfolio', plugins_url( '/js/libs/shufflejs/jquery.shuffle.modernizr.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
+            wp_enqueue_script( 'portfolio' );
+			
+			wp_register_script( 'portfolioinit', plugins_url( '/js/portfolioinit.min.js', dirname(__FILE__) ), array('jquery'), '1.0', false );
+            wp_enqueue_script( 'portfolioinit' );
         
             $output = '<ul id="portfolio-filter" class="filter-options navbar nav nav-pills">';
                 $output .= '<li><button data-group="all" class="btn btn-default active">' . __('All', 'themes-plus') . '</button></li>';
