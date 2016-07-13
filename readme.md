@@ -177,10 +177,6 @@ Common example using the grid:
     <td></td>
 </tr>
 <tr>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
     <td><strong>Video</strong></td>
     <td>
         <pre><code>http://www.youtube.com/watch?v=###########</code></pre>

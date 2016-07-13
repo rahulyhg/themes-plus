@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.2.4
+ * Version: 1.2.5
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -18,25 +18,25 @@ if ( !class_exists("themesPlus") ) {
 	class themesPlus {
 		
 		public function __construct() {
-            
+			
 			// Init function
 			function themes_plus_init() {
-
-				wp_register_style( 'pluginstylesheet', plugins_url('style.css', __FILE__) );
-				wp_enqueue_style( 'pluginstylesheet' ); // Load CSS
-
 				add_editor_style( plugins_url('style-editor.css', __FILE__) ); // Style transformed Shortcodes in TinyMCE Editor
-
-				wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont
-
 			}
 			add_action('init', 'themes_plus_init');
-
-
+			
+			// Load Stylesheets
+			function themes_plus_stylesheets() {
+				wp_register_style( 'pluginstylesheet', plugins_url('style.css', __FILE__) );
+				wp_enqueue_style( 'pluginstylesheet' ); // Load CSS
+				
+				wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont: https://developer.wordpress.org/resource/dashicons/
+			}
+			add_action( 'wp_enqueue_scripts', 'themes_plus_stylesheets' );
+			
+			// Localization
 			function themes_plus_load_textdomain() {
-
 				load_plugin_textdomain( 'themes-plus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
-
 			}
 			add_action( 'plugins_loaded', 'themes_plus_load_textdomain' );
 
@@ -165,7 +165,7 @@ if ( !class_exists("themesPlus") ) {
 		 * 
 		 * Shortcodes:
 		 * [map] (Only working if latlng got defined in Customizer -> e.g. them.es Themes)
-		 * [map latlng="##.####,##.####" zoom="##" class="..." style="..."]
+		 * [map latlng="##.####,##.####" zoom="##" class="..." style="..." key="..."]
 		 */
 			function themes_map_shortcode( $atts = array() ) {
 
@@ -232,6 +232,11 @@ if ( !class_exists("themesPlus") ) {
 							array(
 								'label'       => 'CSS',
 								'attr'        => 'style',
+								'type'        => 'text',
+							),
+							array(
+								'label'       => 'Google API Key',
+								'attr'        => 'key',
 								'type'        => 'text',
 							),
 						),

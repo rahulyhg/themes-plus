@@ -2,8 +2,8 @@
 Contributors: them.es
 Tags: bootstrap, slideshow, slider, gallery, portfolio filter, google maps, google analytics, count down, count up, progressbar, grid
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 1.2.4
+Tested up to: 4.6
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 = Looking for a compatible Theme? =
 
 * Generate your customized __Bootstrap Starter Theme__ under [http://them.es/starter](http://them.es/starter "them.es") - It's free!
-    
+
 = What you get? =
 
 * `[Shortcodes]` and Customization
@@ -103,6 +103,16 @@ Useful Add-ons for WordPress Themes built with Bootstrap.
 * Updated documentation
 
 == Changelog ==
+
+= 1.2.6 =
+* Countdown: Added latest release of jquery-countDown
+
+= 1.2.5 =
+* Google Maps: Optional API Key
+* Portfolio-Filter: Added latest release of Shuffle.js
+
+= 1.2.4 =
+* Ensure future PHP compatibility
 
 = 1.2.3 =
 * Portfolio-Filter: Added Init-Javascript in own file (will work with Autoptimize-Plugin now)
