@@ -3,7 +3,7 @@
  * Plugin Name: them.es Plus
  * Plugin URI: https://wordpress.org/plugins/themes-plus
  * Description: "Short-code" your Bootstrap powered Theme and activate useful modules and features.
- * Version: 1.2.5
+ * Version: 1.2.6
  * Author: them.es
  * Author URI: http://them.es
  * Text Domain: themes-plus
@@ -11,19 +11,21 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 // Initialize Addon
-if ( !class_exists("themesPlus") ) {
+if ( ! class_exists( 'themesPlus' ) ) {
 	class themesPlus {
 		
 		public function __construct() {
 			
 			// Init function
 			function themes_plus_init() {
-				add_editor_style( plugins_url('style-editor.css', __FILE__) ); // Style transformed Shortcodes in TinyMCE Editor
+				add_editor_style( plugins_url( 'style-editor.css', __FILE__ ) ); // Style transformed Shortcodes in TinyMCE Editor
 			}
-			add_action('init', 'themes_plus_init');
+			add_action( 'init', 'themes_plus_init' );
 			
 			// Load Stylesheets
 			function themes_plus_stylesheets() {
@@ -36,7 +38,7 @@ if ( !class_exists("themesPlus") ) {
 			
 			// Localization
 			function themes_plus_load_textdomain() {
-				load_plugin_textdomain( 'themes-plus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+				load_plugin_textdomain( 'themes-plus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 			}
 			add_action( 'plugins_loaded', 'themes_plus_load_textdomain' );
 
@@ -49,8 +51,8 @@ if ( !class_exists("themesPlus") ) {
 			$initshortcake = plugin_dir_path( __FILE__ ) . '/inc/shortcake/shortcode-ui.php';
 
 			// Include Shortcake if not loaded (by other Plugin) already
-			if ( !class_exists( 'Shortcode_UI' ) && is_readable($initshortcake) ) {
-				require_once($initshortcake);
+			if ( ! class_exists( 'Shortcode_UI' ) && is_readable( $initshortcake ) ) {
+				require_once( $initshortcake );
 			}
 
 
@@ -60,8 +62,8 @@ if ( !class_exists("themesPlus") ) {
 			// Include file
 			$tinymce_mod = plugin_dir_path( __FILE__ ) . '/inc/tinymce_mod.php';
 
-			if ( is_readable($tinymce_mod) ) {
-				require_once($tinymce_mod);
+			if ( is_readable( $tinymce_mod ) ) {
+				require_once( $tinymce_mod );
 			}
 
 
@@ -71,8 +73,8 @@ if ( !class_exists("themesPlus") ) {
 			// Include file
 			$plugin_customizer = plugin_dir_path( __FILE__ ) . '/inc/customizer.php';
 
-			if ( is_readable($plugin_customizer) ) {
-				require_once($plugin_customizer);
+			if ( is_readable( $plugin_customizer ) ) {
+				require_once( $plugin_customizer );
 			}
 
 
@@ -80,7 +82,7 @@ if ( !class_exists("themesPlus") ) {
 			 * Google Analytics
 			 */
 			global $ga_trackingcode;
-			$ga_trackingcode = trim( get_theme_mod('themes_plus_google_analytics') ); // see customizer.php
+			$ga_trackingcode = trim( get_theme_mod( 'themes_plus_google_analytics' ) ); // see customizer.php
 			function themes_plus_add_googleanalytics() {
 				global $ga_trackingcode;
 				echo "
@@ -94,7 +96,7 @@ if ( !class_exists("themesPlus") ) {
 				</script>
 				";
 			}
-			if( isset($ga_trackingcode) && $ga_trackingcode != "" ) {
+			if ( isset( $ga_trackingcode ) && ! empty( $ga_trackingcode) ) {
 				add_action('wp_footer', 'themes_plus_add_googleanalytics', 100);
 			}
 
@@ -105,8 +107,8 @@ if ( !class_exists("themesPlus") ) {
 			// Include file
 			$gallery_mod = plugin_dir_path( __FILE__ ) . '/inc/gallery_mod.php';
 
-			if ( is_readable($gallery_mod) ) {
-				require_once($gallery_mod);
+			if ( is_readable( $gallery_mod ) ) {
+				require_once( $gallery_mod );
 			}
 
 			/**
@@ -115,54 +117,54 @@ if ( !class_exists("themesPlus") ) {
 			 */
 
 			// 1. Media-Metabox function
-			function themes_image_attachment_fields($form_fields, $post) {
+			function themes_image_attachment_fields( $form_fields, $post ) {
 
-				$form_fields["weblink"]["label"] = __( 'Weblink', 'themes-plus' );
-				$form_fields["weblink"]["input"] = "text";
-				$form_fields["weblink"]["value"] = get_post_meta($post->ID, "_weblink", true);
+				$form_fields['weblink']['label'] = __( 'Weblink', 'themes-plus' );
+				$form_fields['weblink']['input'] = 'text';
+				$form_fields['weblink']['value'] = get_post_meta( $post->ID, '_weblink', true );
 
 				return $form_fields;
 
 			}
-			add_filter('attachment_fields_to_edit', 'themes_image_attachment_fields', null, 2);
+			add_filter( 'attachment_fields_to_edit', 'themes_image_attachment_fields', null, 2 );
 
 			// 2. Save function
-			function themes_image_attachment_fields_to_save($post, $attachment) {
+			function themes_image_attachment_fields_to_save( $post, $attachment ) {
 
-				if( isset($attachment['weblink']) ){
-					// update_post_meta(postID, meta_key, meta_value);
-					update_post_meta($post['ID'], '_weblink', $attachment['weblink']);
+				if ( isset( $attachment['weblink'] ) ) {
+					// update_post_meta( postID, meta_key, meta_value );
+					update_post_meta( $post['ID'], '_weblink', $attachment['weblink'] );
 				}
 
 				return $post;
 
 			}
-			add_filter('attachment_fields_to_save', 'themes_image_attachment_fields_to_save', null , 2);
+			add_filter( 'attachment_fields_to_save', 'themes_image_attachment_fields_to_save', null , 2 );
 
 
 			/**
 			 * Fix Shortcode markup
 			 * Thanks: https://gist.github.com/maxxscho/2058547
 			 */
-			function themes_shortcode_fix_empty_paragraphs($content) {
+			function themes_shortcode_fix_empty_paragraphs( $content ) {
 
-				$array = array (
+				$array = array(
 					'<p>[' => '[',
 					']</p>' => ']',
 					']<br>' => ']',
 					']<br/>' => ']',
-					']<br />' => ']'
+					']<br />' => ']',
 				);
-				$content = strtr($content, $array);
+				$content = strtr( $content, $array );
 				return $content;
 
 			}
-			add_filter('the_content', 'themes_shortcode_fix_empty_paragraphs');
+			add_filter( 'the_content', 'themes_shortcode_fix_empty_paragraphs' );
 
 
 		/**
 		 * Google Maps
-		 * 
+		 *
 		 * Shortcodes:
 		 * [map] (Only working if latlng got defined in Customizer -> e.g. them.es Themes)
 		 * [map latlng="##.####,##.####" zoom="##" class="..." style="..." key="..."]
@@ -170,10 +172,10 @@ if ( !class_exists("themesPlus") ) {
 			function themes_map_shortcode( $atts = array() ) {
 
 				// Include file
-				$file = plugin_dir_path( __FILE__ ) . "/inc/map.php";
+				$file = plugin_dir_path( __FILE__ ) . '/inc/map.php';
 
 				// Return Content from file
-				if ( $file != 'NULL' && file_exists($file) ) {
+				if ( 'NULL' !== $file && file_exists( $file ) ) {
 
 					ob_start();
 					include( $file );
@@ -193,7 +195,7 @@ if ( !class_exists("themesPlus") ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'map',
 					array(
@@ -254,18 +256,19 @@ if ( !class_exists("themesPlus") ) {
 			function themes_recentposts_shortcode( $atts = array() ) {
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'posts' => '5',
-					'ids' => ''
-				), $atts));
+					'ids' => '',
+				), $atts ) );
 
 				// Return Content
 				$content = '<ul class="recentposts">';
 				$content .= '<li><h3>' . __('Recent Posts', 'themes-plus') . '</h3></li>';
 					$recentposts_query = new WP_Query( "posts_per_page=$posts" );// $posts = number of posts (default = 5)
 					$month_check = null;
-					if ( $recentposts_query->have_posts() ) : 
-						while ( $recentposts_query->have_posts() ) : $recentposts_query->the_post();
+					if ( $recentposts_query->have_posts() ) :
+						while ( $recentposts_query->have_posts() ) :
+							$recentposts_query->the_post();
 							$content .= '<li>';
 								// Show monthly archive and link to months
 								$month = get_the_date('F, Y');
@@ -274,7 +277,7 @@ if ( !class_exists("themesPlus") ) {
 							$content .= '<h4><a href="' . get_the_permalink() . '" title="' . sprintf( __('Permalink to %s', 'themes-plus'), the_title_attribute('echo=0') ) . '" rel="bookmark">' . get_the_title() . '</a></h4>';
 							$content .= '</li>';
 						endwhile;
-					else:
+					else :
 						$content .= __('No Posts found!', 'themes-plus');
 					endif; wp_reset_postdata(); // end of the loop.
 				$content .= '</ul>';
@@ -289,7 +292,7 @@ if ( !class_exists("themesPlus") ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'recentposts',
 					array(
@@ -310,7 +313,7 @@ if ( !class_exists("themesPlus") ) {
 								'type'        => 'post_select',
 								'query'       => array(
 													'post_type' => 'post',
-													//'order' => 'ASC'
+													//'order' => 'ASC',
 												),
 								'multiple'    => true,
 							),
@@ -339,7 +342,7 @@ if ( !class_exists("themesPlus") ) {
 				// Get Attributes
 				extract(shortcode_atts(array(
 					'class' => '',
-					'style' => ''
+					'style' => '',
 				), $atts));
 
 				$datetime = strtolower( do_shortcode( shortcode_unautop( $content ) ) ); // If $content contains a shortcode, that code will get processed
@@ -388,7 +391,7 @@ if ( !class_exists("themesPlus") ) {
 
 		/**
 		 * Stats Counter
-		 * 
+		 *
 		 * Shortcode:
 		 * [countup]###[/countup]
 		 */
@@ -405,7 +408,7 @@ if ( !class_exists("themesPlus") ) {
 				// Get Attributes
 				extract(shortcode_atts(array(
 					'class' => '',
-					'style' => ''
+					'style' => '',
 				), $atts));
 
 				$timer = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
@@ -419,7 +422,7 @@ if ( !class_exists("themesPlus") ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'countup',
 					array(
@@ -459,19 +462,19 @@ if ( !class_exists("themesPlus") ) {
 			function themes_progressbar_shortcode( $atts = array(), $content = null ) {
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'type' => '',
 					'title' => '',
 					'color' => '',
 					'duration' => '',
 					'label' => '',
 					'class' => '',
-					'style' => ''
-				), $atts));
+					'style' => '',
+				), $atts ) );
 
 				$value = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
 
-				if ( isset($type) && $type == "chart" ) {
+				if ( isset( $type ) && 'chart' === $type ) {
 					// Circular Progress indicator
 
 					wp_register_script( 'progresschart', plugins_url( '/js/libs/easy-pie-chart/jquery.easypiechart.min.js', __FILE__ ), array('jquery'), '1.0', false );
@@ -480,25 +483,25 @@ if ( !class_exists("themesPlus") ) {
 					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechartinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
 					wp_enqueue_script( 'progresschartinit' );
 
-					if ( isset($color) && $color != "" ) {
+					if ( isset( $color ) && ! empty( $color ) ) {
 
-						if ( $color == "blue" ) {
-							$colorcode = "337AB7";
-						} else if ( $color == "green" ) {
-							$colorcode = "5CB85C";
-						} else if ( $color == "lightblue" ) {
-							$colorcode = "5BC0DE";
-						} else if ( $color == "yellow" ) {
-							$colorcode = "F0AD4E";
-						} else if ( $color == "red" ) {
-							$colorcode = "D9534F";
+						if ( 'blue' === $color ) {
+							$colorcode = '337AB7';
+						} else if ( 'green' === $color ) {
+							$colorcode = '5CB85C';
+						} else if ( 'lightblue' === $color ) {
+							$colorcode = '5BC0DE';
+						} else if ( 'yellow' === $color) {
+							$colorcode = 'F0AD4E';
+						} else if ( 'red' === $color ) {
+							$colorcode = 'D9534F';
 						}
 
 					}
 
 					$progressbar = '<div class="pie">';
-					$progressbar .= '<div class="chart" data-percent="0" data-value="' . $value . '" data-duration="' . ( isset($duration) && $duration != "" ? $duration*1000 : '2000' ) . '"' . ( isset($colorcode) && $colorcode != "" ? ' data-bar-color="#' . $colorcode . '"' : '' ) . '>' . ( isset($label) && $label != "" || isset($label) && $label == "1" ? '<span class="percent">' . $value . '</span>' : '' ) . '</div>';
-					if ( isset($title) && $title != "" ) { $progressbar .= '<h3>' . $title . '</h3>'; }
+					$progressbar .= '<div class="chart" data-percent="0" data-value="' . $value . '" data-duration="' . ( isset( $duration ) && ! empty( $duration ) ? $duration * 1000 : '2000' ) . '"' . ( isset( $colorcode ) && ! empty( $colorcode ) ? ' data-bar-color="#' . $colorcode . '"' : '' ) . '>' . ( isset( $label ) && ! empty( $label ) || isset( $label ) && '1' === $label ? '<span class="percent">' . $value . '</span>' : '' ) . '</div>';
+					if ( isset( $title ) && ! empty( $title ) ) { $progressbar .= '<h3>' . $title . '</h3>'; }
 					$progressbar .= '</div>';
 
 				} else {
@@ -507,38 +510,38 @@ if ( !class_exists("themesPlus") ) {
 					wp_register_script( 'progressbarinit', plugins_url( '/js/progressbarinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
 					wp_enqueue_script( 'progressbarinit' );
 
-					if ( isset($color) && $color != "" ) {
+					if ( isset( $color ) && ! empty( $color ) ) {
 
-						if ( $color == "blue" ) {
-							$class .= " progress-bar-primary";
-						} else if ( $color == "green" ) {
-							$class .= " progress-bar-success";
-						} else if ( $color == "lightblue" ) {
-							$class .= " progress-bar-info";
-						} else if ( $color == "yellow" ) {
-							$class .= " progress-bar-warning";
-						} else if ( $color == "red" ) {
-							$class .= " progress-bar-danger";
+						if ( 'blue' === $color ) {
+							$class .= ' progress-bar-primary';
+						} else if ( 'green' === $color ) {
+							$class .= ' progress-bar-success';
+						} else if ( 'lightblue' === $color ) {
+							$class .= ' progress-bar-info';
+						} else if ( 'yellow' === $color ) {
+							$class .= ' progress-bar-warning';
+						} else if ( 'red' === $color ) {
+							$class .= ' progress-bar-danger';
 						}
 
 					}
 
 					//$style .= "width: " . $value . "%;"; // no CSS3 animation!
 
-					if ( isset($duration) && $duration != "" ) {
-						$style .= "-webkit-transition-duration: " . $duration . "s; transition-duration: " . $duration . "s;";
+					if ( isset( $duration ) && ! empty( $duration ) ) {
+						$style .= '-webkit-transition-duration: ' . $duration . 's; transition-duration: ' . $duration . 's;';
 					} else {
-						$style .= "-webkit-transition-duration: 2s; transition-duration: 2s;"; // Default
+						$style .= '-webkit-transition-duration: 2s; transition-duration: 2s;'; // Default
 					}
 
-					if ( isset($label) && $label != "" ) {
-						$label = $value . "%";
+					if ( isset( $label ) && ! empty( $label ) ) {
+						$label = $value . '%';
 					}
 
 					$progressbar = '<div class="progress">';
-					if ( isset($title) && $title != "" ) { $progressbar .= '<h3>' . $title . '</h3>'; }
+					if ( isset( $title ) && ! empty( $title ) ) { $progressbar .= '<h3>' . $title . '</h3>'; }
 					$progressbar .= '<div class="progress-bar' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="0" aria-valuemax="100">';
-					$progressbar .= ( isset($label) && $label != "" || isset($label) && $label == "1" ? $value . '%' : '<span class="sr-only">' . $value . '%</span>' );
+					$progressbar .= ( isset( $label ) && ! empty( $label ) || isset( $label ) && '1' === $label ? $value . '%' : '<span class="sr-only">' . $value . '%</span>' );
 					$progressbar .= '</div>';
 					$progressbar .= '</div>';
 
@@ -553,7 +556,7 @@ if ( !class_exists("themesPlus") ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'progressbar',
 					array(
@@ -632,10 +635,10 @@ if ( !class_exists("themesPlus") ) {
 				wp_enqueue_script( 'carouselinit' );
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
-					'style' => ''
-				), $atts));
+					'style' => '',
+				), $atts) );
 
 				$GLOBALS['carouselslide_count'] = 0;
 
@@ -648,10 +651,10 @@ if ( !class_exists("themesPlus") ) {
 			function themes_carouselslide_shortcode( $atts = array(), $content = null ) {
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
-					'style' => ''
-				), $atts));
+					'style' => '',
+				), $atts) );
 
 				if( isset($GLOBALS['carouselslide_count']) ) {
 
@@ -714,10 +717,10 @@ if ( !class_exists("themesPlus") ) {
 			function themes_row_shortcode( $atts = array(), $content = null ) {
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
-					'style' => ''
-				), $atts));
+					'style' => '',
+				), $atts ) );
 
 				$GLOBALS['colitem_count'] = substr_count( $content, '[/col]' ); // Count number of closing cols
 
@@ -730,21 +733,21 @@ if ( !class_exists("themesPlus") ) {
 			function themes_col_shortcode( $atts = array(), $content = null ) {
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
-					'style' => ''
-				), $atts));
+					'style' => '',
+				), $atts ) );
 
 				if ( isset( $GLOBALS['colitem_count'] ) ) {
 					$colcounter = $GLOBALS['colitem_count'];
 
-					if ( $colcounter == 2 ) {
+					if ( 2 === $colcounter ) {
 						$bootstrap = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; // 2 cols
-					} else if ( $colcounter == 3 ) {
+					} else if ( 3 === $colcounter ) {
 						$bootstrap = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; // 3 cols
-					} else if ( $colcounter == 4 ) {
+					} else if ( 4 === $colcounter ) {
 						$bootstrap = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; // 4 cols
-					} else if ( $colcounter == 6 ) {
+					} else if ( 6 === $colcounter ) {
 						$bootstrap = 'col-lg-2 col-md-2 col-sm-6 col-xs-12'; // 6 cols
 					}
 
@@ -763,7 +766,7 @@ if ( !class_exists("themesPlus") ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'col',
 					array(
@@ -796,20 +799,20 @@ if ( !class_exists("themesPlus") ) {
 	}
 }
 
-if ( class_exists("themesPlus") ) {
-	$themesPlus = new themesPlus();
+if ( class_exists( 'themesPlus' ) ) {
+	$themes_plus = new themesPlus();
 }
 
-if ( !function_exists('_log') ){
-  function _log( $message ) {
-    if ( WP_DEBUG === true ) {
-      if ( is_array( $message ) || is_object( $message ) ){
-        error_log( print_r( $message, true ) );
-      } else {
-        error_log( $message );
-      }
-    }
-  }
+if ( ! function_exists( '_log' ) ){
+	function _log( $message ) {
+	if ( WP_DEBUG === true ) {
+		if ( is_array( $message ) || is_object( $message ) ){
+		error_log( print_r( $message, true ) );
+		} else {
+		error_log( $message );
+		}
+	}
+	}
 }
 
 ?>
