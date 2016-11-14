@@ -29,7 +29,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 			
 			// Load Stylesheets
 			function themes_plus_stylesheets() {
-				wp_register_style( 'pluginstylesheet', plugins_url('style.css', __FILE__) );
+				wp_register_style( 'pluginstylesheet', plugins_url( 'style.css', __FILE__ ) );
 				wp_enqueue_style( 'pluginstylesheet' ); // Load CSS
 				
 				wp_enqueue_style( 'dashicons' ); // Activate wp-internal dashicons webfont: https://developer.wordpress.org/resource/dashicons/
@@ -97,7 +97,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 				";
 			}
 			if ( isset( $ga_trackingcode ) && ! empty( $ga_trackingcode) ) {
-				add_action('wp_footer', 'themes_plus_add_googleanalytics', 100);
+				add_action( 'wp_footer', 'themes_plus_add_googleanalytics', 100 );
 			}
 
 
@@ -271,15 +271,16 @@ if ( ! class_exists( 'themesPlus' ) ) {
 							$recentposts_query->the_post();
 							$content .= '<li>';
 								// Show monthly archive and link to months
-								$month = get_the_date('F, Y');
-								if ($month !== $month_check) : $content .= '<p><a href="' . get_month_link( get_the_date('Y'), get_the_date('m') ) . '" title="' . get_the_date('F, Y') . '">' . $month . '</a></p>'; endif;
+								$month = get_the_date( 'F, Y' );
+								if ( $month !== $month_check ) : $content .= '<p><a href="' . get_month_link( get_the_date( 'Y' ), get_the_date( 'm' ) ) . '" title="' . get_the_date( 'F, Y' ) . '">' . $month . '</a></p>'; endif;
 								$month_check = $month;
-							$content .= '<h4><a href="' . get_the_permalink() . '" title="' . sprintf( __('Permalink to %s', 'themes-plus'), the_title_attribute('echo=0') ) . '" rel="bookmark">' . get_the_title() . '</a></h4>';
+							$content .= '<h4><a href="' . get_the_permalink() . '" title="' . sprintf( __( 'Permalink to %s', 'themes-plus' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . get_the_title() . '</a></h4>';
 							$content .= '</li>';
 						endwhile;
 					else :
 						$content .= __('No Posts found!', 'themes-plus');
-					endif; wp_reset_postdata(); // end of the loop.
+					endif;
+					wp_reset_postdata(); // end of the loop.
 				$content .= '</ul>';
 				//$content = ob_get_clean();
 
@@ -333,21 +334,21 @@ if ( ! class_exists( 'themesPlus' ) ) {
 			// Datetime: [timer]January 25, 2020 12:00:00[/timer]
 			function themes_timer_shortcode( $atts = array(), $content = null ) {
 
-				wp_register_script( 'timer', plugins_url( '/js/libs/jquery-countDown/jquery.jcountdown.min.js', __FILE__ ), array('jquery'), '1.0', false );
+				wp_register_script( 'timer', plugins_url( '/js/libs/jquery-countDown/jquery.jcountdown.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'timer' );
 
-				wp_register_script( 'timerinit', plugins_url( '/js/countdowninit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+				wp_register_script( 'timerinit', plugins_url( '/js/countdowninit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'timerinit' );
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
 					'style' => '',
-				), $atts));
+				), $atts ) );
 
 				$datetime = strtolower( do_shortcode( shortcode_unautop( $content ) ) ); // If $content contains a shortcode, that code will get processed
 
-				return '<h3 id="timer" class="h1 timer' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' data-to="' . $datetime .'" data-offset="' . get_option('gmt_offset') . '" data-rtl="' . ( is_rtl() ? 'true' : 'false' ) . '">' . $datetime . ', UTC ' . get_option('gmt_offset') . '</h3>';
+				return '<h3 id="timer" class="h1 timer' . ( $class ? ' ' . $class : '' ) . '"' . ( $style ? ' style="' . $style . '"' : '' ) . ' data-to="' . $datetime .'" data-offset="' . get_option( 'gmt_offset' ) . '" data-rtl="' . ( is_rtl() ? 'true' : 'false' ) . '">' . $datetime . ', UTC ' . get_option( 'gmt_offset' ) . '</h3>';
 
 			}
 			add_shortcode( 'timer', 'themes_timer_shortcode' );
@@ -356,7 +357,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'timer',
 					array(
@@ -365,7 +366,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 						'attrs' => array(
 							array(
 								'label'       => 'Timestamp: January 25, 2020 12:00:00',
-								'description' => 'Timezone: UTC ' . get_option('gmt_offset') . ' ' . get_option('timezone_string'),
+								'description' => 'Timezone: UTC ' . get_option( 'gmt_offset' ) . ' ' . get_option( 'timezone_string' ),
 								'attr'        => 'content',
 								'type'        => 'text',
 							),
@@ -382,7 +383,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 						),
 						'inner_content' => array(
 							'label'       => 'Timestamp: January 25, 2020 12:00:00',
-							'description' => 'Timezone: UTC ' . get_option('gmt_offset') . ' ' . get_option('timezone_string'),
+							'description' => 'Timezone: UTC ' . get_option( 'gmt_offset' ) . ' ' . get_option( 'timezone_string' ),
 						),
 					)
 				);
@@ -399,17 +400,17 @@ if ( ! class_exists( 'themesPlus' ) ) {
 			// Number: [countup]###[/countup]
 			function themes_countup_shortcode( $atts = array(), $content = null ) {
 
-				wp_register_script( 'countto', plugins_url( '/js/libs/jquery-countTo/jquery.countTo.js', __FILE__ ), array('jquery'), '1.0', false );
+				wp_register_script( 'countto', plugins_url( '/js/libs/jquery-countTo/jquery.countTo.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'countto' );
 
-				wp_register_script( 'counttoinit', plugins_url( '/js/counttoinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+				wp_register_script( 'counttoinit', plugins_url( '/js/counttoinit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'counttoinit' );
 
 				// Get Attributes
-				extract(shortcode_atts(array(
+				extract( shortcode_atts( array(
 					'class' => '',
 					'style' => '',
-				), $atts));
+				), $atts ) );
 
 				$timer = do_shortcode( shortcode_unautop( $content ) ); // If $content contains a shortcode, that code will get processed
 
@@ -477,23 +478,23 @@ if ( ! class_exists( 'themesPlus' ) ) {
 				if ( isset( $type ) && 'chart' === $type ) {
 					// Circular Progress indicator
 
-					wp_register_script( 'progresschart', plugins_url( '/js/libs/easy-pie-chart/jquery.easypiechart.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_register_script( 'progresschart', plugins_url( '/js/libs/easy-pie-chart/jquery.easypiechart.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 					wp_enqueue_script( 'progresschart' );
 
-					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechartinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_register_script( 'progresschartinit', plugins_url( '/js/easypiechartinit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 					wp_enqueue_script( 'progresschartinit' );
 
 					if ( isset( $color ) && ! empty( $color ) ) {
 
 						if ( 'blue' === $color ) {
 							$colorcode = '337AB7';
-						} else if ( 'green' === $color ) {
+						} elseif ( 'green' === $color ) {
 							$colorcode = '5CB85C';
-						} else if ( 'lightblue' === $color ) {
+						} elseif ( 'lightblue' === $color ) {
 							$colorcode = '5BC0DE';
-						} else if ( 'yellow' === $color) {
+						} elseif ( 'yellow' === $color ) {
 							$colorcode = 'F0AD4E';
-						} else if ( 'red' === $color ) {
+						} elseif ( 'red' === $color ) {
 							$colorcode = 'D9534F';
 						}
 
@@ -507,20 +508,20 @@ if ( ! class_exists( 'themesPlus' ) ) {
 				} else {
 					// Bootstrap Progress bar
 
-					wp_register_script( 'progressbarinit', plugins_url( '/js/progressbarinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+					wp_register_script( 'progressbarinit', plugins_url( '/js/progressbarinit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 					wp_enqueue_script( 'progressbarinit' );
 
 					if ( isset( $color ) && ! empty( $color ) ) {
 
 						if ( 'blue' === $color ) {
 							$class .= ' progress-bar-primary';
-						} else if ( 'green' === $color ) {
+						} elseif ( 'green' === $color ) {
 							$class .= ' progress-bar-success';
-						} else if ( 'lightblue' === $color ) {
+						} elseif ( 'lightblue' === $color ) {
 							$class .= ' progress-bar-info';
-						} else if ( 'yellow' === $color ) {
+						} elseif ( 'yellow' === $color ) {
 							$class .= ' progress-bar-warning';
-						} else if ( 'red' === $color ) {
+						} elseif ( 'red' === $color ) {
 							$class .= ' progress-bar-danger';
 						}
 
@@ -567,11 +568,11 @@ if ( ! class_exists( 'themesPlus' ) ) {
 								'label'       => 'Type',
 								'attr'        => 'type',
 								'type'        => 'radio',
-								'value'       => 'bar', // default value 
+								'value'       => 'bar', // default value
 								'options'     => array(
 													'bar' => 'Bar',
-													'chart' => 'Chart'
-												)
+													'chart' => 'Chart',
+												),
 							),
 							array(
 								'label'       => 'Color',
@@ -582,8 +583,8 @@ if ( ! class_exists( 'themesPlus' ) ) {
 													'green' => 'Green',
 													'lightblue' => 'Lightblue',
 													'yellow' => 'Yellow',
-													'red' => 'Red'
-												)
+													'red' => 'Red',
+												),
 							),
 							array(
 								'label'       => 'Duration (seconds)',
@@ -614,7 +615,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 							'meta' => array(
 								'placeholder' => '40',
 							),
-						),	
+						),
 					)
 				);
 			}
@@ -631,7 +632,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 		 */
 			function themes_carousel_shortcode( $atts = array(), $content = null ) {
 
-				wp_register_script( 'carouselinit', plugins_url( '/js/carouselinit.min.js', __FILE__ ), array('jquery'), '1.0', false );
+				wp_register_script( 'carouselinit', plugins_url( '/js/carouselinit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'carouselinit' );
 
 				// Get Attributes
@@ -656,9 +657,9 @@ if ( ! class_exists( 'themesPlus' ) ) {
 					'style' => '',
 				), $atts) );
 
-				if( isset($GLOBALS['carouselslide_count']) ) {
+				if ( isset( $GLOBALS['carouselslide_count'] ) ) {
 
-					if( $GLOBALS['carouselslide_count'] == 0 ) {
+					if ( 0 === $GLOBALS['carouselslide_count'] ) {
 						$class .= " active"; // first slide
 					}
 
@@ -675,7 +676,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 		 * Register a TinyMCE UI for the Shortcode
 		 * External Plugin "Shortcode UI" required: https://github.com/fusioneng/Shortcake
 		 */
-			if (function_exists('shortcode_ui_register_for_shortcode')) {
+			if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 				shortcode_ui_register_for_shortcode(
 					'carouselslide',
 					array(
@@ -743,11 +744,11 @@ if ( ! class_exists( 'themesPlus' ) ) {
 
 					if ( 2 === $colcounter ) {
 						$bootstrap = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; // 2 cols
-					} else if ( 3 === $colcounter ) {
+					} elseif ( 3 === $colcounter ) {
 						$bootstrap = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; // 3 cols
-					} else if ( 4 === $colcounter ) {
+					} elseif ( 4 === $colcounter ) {
 						$bootstrap = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; // 4 cols
-					} else if ( 6 === $colcounter ) {
+					} elseif ( 6 === $colcounter ) {
 						$bootstrap = 'col-lg-2 col-md-2 col-sm-6 col-xs-12'; // 6 cols
 					}
 
@@ -789,7 +790,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 							'meta' => array(
 								'placeholder' => 'Lorem ipsum dolor sit amet...',
 							),
-						),  
+						),
 					)
 				);
 			}
@@ -803,15 +804,15 @@ if ( class_exists( 'themesPlus' ) ) {
 	$themes_plus = new themesPlus();
 }
 
-if ( ! function_exists( '_log' ) ){
+if ( ! function_exists( '_log' ) ) {
 	function _log( $message ) {
-	if ( WP_DEBUG === true ) {
-		if ( is_array( $message ) || is_object( $message ) ){
-		error_log( print_r( $message, true ) );
-		} else {
-		error_log( $message );
+		if ( true === WP_DEBUG ) {
+			if ( is_array( $message ) || is_object( $message ) ) {
+				error_log( print_r( $message, true ) );
+			} else {
+				error_log( $message );
+			}
 		}
-	}
 	}
 }
 
