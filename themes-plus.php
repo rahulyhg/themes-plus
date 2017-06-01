@@ -334,7 +334,7 @@ if ( ! class_exists( 'themesPlus' ) ) {
 			// Datetime: [timer]January 25, 2020 12:00:00[/timer]
 			function themes_timer_shortcode( $atts = array(), $content = null ) {
 
-				wp_register_script( 'timer', plugins_url( '/js/libs/jquery-countDown/jquery.jcountdown.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
+				wp_register_script( 'timer', plugins_url( '/js/libs/jquery-countDown/dist/jquery.jcountdown.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
 				wp_enqueue_script( 'timer' );
 
 				wp_register_script( 'timerinit', plugins_url( '/js/countdowninit.min.js', __FILE__ ), array( 'jquery' ), '1.0', false );
